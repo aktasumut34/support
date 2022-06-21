@@ -1,0 +1,468 @@
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  
+}
+
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  
+}
+
+.t-col-span-1 {
+  grid-column: span 1 / span 1
+}
+
+.t-col-span-3 {
+  grid-column: span 3 / span 3
+}
+
+.t-col-span-2 {
+  grid-column: span 2 / span 2
+}
+
+.t-my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem
+}
+
+.t-mt-auto {
+  margin-top: auto
+}
+
+.t-mt-4 {
+  margin-top: 1rem
+}
+
+.t-mt-2 {
+  margin-top: 0.5rem
+}
+
+.t-flex {
+  display: flex
+}
+
+.t-grid {
+  display: grid
+}
+
+.t-h-6 {
+  height: 1.5rem
+}
+
+.t-min-h-\[50vh\] {
+  min-height: 50vh
+}
+
+.t-w-full {
+  width: 100%
+}
+
+.t-w-6 {
+  width: 1.5rem
+}
+
+.t-grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.t-grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.t-grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr))
+}
+
+.t-grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr))
+}
+
+.t-flex-col {
+  flex-direction: column
+}
+
+.t-items-start {
+  align-items: flex-start
+}
+
+.t-items-end {
+  align-items: flex-end
+}
+
+.t-items-center {
+  align-items: center
+}
+
+.t-items-stretch {
+  align-items: stretch
+}
+
+.t-justify-center {
+  justify-content: center
+}
+
+.t-justify-between {
+  justify-content: space-between
+}
+
+.t-gap-4 {
+  gap: 1rem
+}
+
+.t-gap-6 {
+  gap: 1.5rem
+}
+
+.t-gap-2 {
+  gap: 0.5rem
+}
+
+.t-gap-3 {
+  gap: 0.75rem
+}
+
+.t-gap-8 {
+  gap: 2rem
+}
+
+.t-rounded-lg {
+  border-radius: 0.5rem
+}
+
+.t-rounded-full {
+  border-radius: 9999px
+}
+
+.t-border-0 {
+  border-width: 0px
+}
+
+.t-border {
+  border-width: 1px
+}
+
+.t-border-slate-900 {
+  --tw-border-opacity: 1;
+  border-color: rgb(15 23 42 / var(--tw-border-opacity))
+}
+
+.t-bg-transparent {
+  background-color: transparent
+}
+
+.t-bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.t-bg-sky-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity))
+}
+
+.t-bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity))
+}
+
+.t-p-4 {
+  padding: 1rem
+}
+
+.t-p-0 {
+  padding: 0px
+}
+
+.t-py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
+.t-pt-5 {
+  padding-top: 1.25rem
+}
+
+.t-pt-2 {
+  padding-top: 0.5rem
+}
+
+.t-text-center {
+  text-align: center
+}
+
+.t-text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.t-text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.t-text-base {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.t-text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.t-text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.t-font-semibold {
+  font-weight: 600
+}
+
+.t-font-bold {
+  font-weight: 700
+}
+
+.t-font-normal {
+  font-weight: 400
+}
+
+.t-leading-3 {
+  line-height: .75rem
+}
+
+.t-leading-4 {
+  line-height: 1rem
+}
+
+.t-leading-5 {
+  line-height: 1.25rem
+}
+
+.t-text-sky-600 {
+  --tw-text-opacity: 1;
+  color: rgb(2 132 199 / var(--tw-text-opacity))
+}
+
+.t-text-slate-700 {
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity))
+}
+
+.t-text-slate-500 {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity))
+}
+
+.t-text-slate-600 {
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity))
+}
+
+.t-text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.t-text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity))
+}
+
+.t-text-slate-800 {
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity))
+}
+
+.t-shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+
+.t-shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+
+@media (min-width: 1024px) {
+  .lg\:t-col-span-2 {
+    grid-column: span 2 / span 2
+  }
+
+  .lg\:t-grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .lg\:t-p-8 {
+    padding: 2rem
+  }
+
+  .lg\:t-text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem
+  }
+
+  .lg\:t-text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:t-grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .xl\:t-grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr))
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:t-grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .\32xl\:t-text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem
+  }
+
+  .\32xl\:t-text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem
+  }
+}
