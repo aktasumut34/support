@@ -64,12 +64,13 @@ background: linear-gradient(0deg, rgba(227, 143, 27, 0.60) 0%, rgba(227, 143, 27
                     @include('includes.user.verticalmenu')
                     <div class="col-xl-9">
                         @foreach ($lineups as $lineup)
-                            <div class="row" style="margin-bottom: 35px;">
-                                <div style="display: flex; justify-content: space-between">
-                                    <h2 class="card-title" style="font-size: 2em">{{ $lineup->name }}</h2>
+                            <div class="row" style="margin-bottom: 45px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
+                                    <h2 class="card-title" style="font-size: 2em; margin-bottom: 0;">{{ $lineup->name }}</h2>
                                     <a href="{{ route('lineup', ['id' => $lineup->id]) }}" class="btn btn-primary">Show Lineup Documents</a>
+                                    <a class='btn btn-secondary' id="collapseLever-{{$lineup->id}}" data-bs-toggle='collapse' href='#collapse-{{$lineup->id}}'>+</a>
                                 </div>
-                                <div class="t-grid t-grid-cols-1 lg:t-grid-cols-3 t-gap-4 t-items-stretch">
+                                <div class="t-grid t-grid-cols-1 lg:t-grid-cols-3 t-gap-4 t-items-stretch collapse" id="collapse-{{$lineup->id}}" data-handler='collapseLever-{{$lineup->id}}'>
                                     @foreach ($lineup->machines as $machine)
                                         <div class="machine-container" style='position: relative;'>
                                             <div class="machine-overlay">
@@ -125,4 +126,12 @@ background: linear-gradient(0deg, rgba(227, 143, 27, 0.60) 0%, rgba(227, 143, 27
 
     <!-- wowmaster js-->
     <script src="{{ asset('assets/plugins/wowmaster/js/wow.min.js') }}?v=<?php echo time(); ?>"></script>
+    <script>
+        $('.collapse').on('show.bs.collapse', function() {
+            $("#"+$(this).data('handler')).html('-');
+        });
+        $('.collapse').on('hide.bs.collapse', function() {
+            $("#"+$(this).data('handler')).html('+');
+        });
+    </script>
 @endsection

@@ -341,7 +341,7 @@
                     if (p) {
                         p.quantity += spare_part.quantity;
                     } else {
-                        cartItem.spare_parts.push(spare_part);
+                        cartItem.spare_parts.push({...spare_part});
                     }
                 } else {
                     this.cart.push({
