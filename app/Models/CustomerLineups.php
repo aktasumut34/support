@@ -22,6 +22,6 @@ class CustomerLineups extends Model
     }
     public function machines()
     {
-        return $this->belongsToMany(Machines::class, 'customer_lineup_machines', 'customer_lineup_id', 'machine_id')->withPivot('id', 'serial_number', 'register_date');
+        return $this->belongsToMany(Machines::class, 'customer_lineup_machines', 'customer_lineup_id', 'machine_id')->withPivot('id', 'serial_number', 'register_date')->orderBy('serial_number', 'asc');
     }
 }

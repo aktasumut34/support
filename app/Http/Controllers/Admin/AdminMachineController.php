@@ -774,7 +774,7 @@ class AdminMachineController extends Controller
         $data['page'] = $post;
 
         if (request()->ajax()) {
-            $data = SparePartRequests::orderBy('created_at', 'DESC')->get();
+            $data = SparePartRequests::orderBy('updated_at', 'DESC')->get();
 
             return DataTables::of($data)
                 ->addColumn('id', function ($data) {
