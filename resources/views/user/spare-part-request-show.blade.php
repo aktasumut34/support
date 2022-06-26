@@ -103,18 +103,19 @@
                                                  </tbody>
                                              </table>
                                              @if($sparePartRequest->status != 'New')
-                                             <div
-                                                     class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                                     <span class="t-font-bold">Total Price (₺)</span>
-                                                     <span class="t-font-semibold"> ₺
-                                                         {{ number_format(
-                                                             $sparePartRequest->items->reduce(function ($carry, $item) {
-                                                                 return $carry + $item->price * $item->quantity;
-                                                             }),
-                                                             2,
-                                                         ) }}
-                                                     </span>
-                                                 </div>
+                                             <div class="t-flex t-flex-col t-gap-2 t-mb-8">
+                                                <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
+                                                    <span class="t-font-bold">Total Price (₺)</span>
+                                                    <span class="t-font-semibold">₺ {{ number_format($sparePartRequest->total, 2) }}</span>
+                                                    <input type='hidden' name='total' value="{{ $sparePartRequest->total }}" />
+                                                </div>
+                                                @if($sparePartRequest->discounted_total && $sparePartRequest->discounted_total != $sparePartRequest->total)
+                                                    <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
+                                                        <span class="t-font-bold">Discounted Price (₺)</span>
+                                                        <span class="t-font-semibold">₺ {{ number_format($sparePartRequest->discounted_total, 2) }}</span>
+                                                    </div>
+                                                @endif
+                                            </div>
                                              @endif
                                              @if ($sparePartRequest->status == 'Waiting for Approval')
 

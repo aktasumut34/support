@@ -9,7 +9,7 @@ class SparePartRequests extends Model
 {
     use HasFactory;
     protected $table = 'spare_part_requests';
-    protected $fillable = ['request_no', 'customer_id', 'status'];
+    protected $fillable = ['request_no', 'customer_id', 'status', 'total'];
 
     public function customer()
     {

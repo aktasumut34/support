@@ -8,6 +8,24 @@
                                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow p-0 notification-dropdown-container">
                                             @if(auth()->guard('customer')->user())
                                                 @forelse( auth()->guard('customer')->user()->unreadNotifications()->paginate(2) as $notification)
+                                                    @if(isset($notification->data['sprprt']))
+                                                    <a class="dropdown-item border-bottom mark-as-read" href="{{$notification->data['clink']}}" data-id="{{ $notification->id }}">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="">
+                                                                    <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20"></i></span>
+                                                                </div>
+                                                                <div class="d-flex">
+                                                                    <div class="ps-3">
+                                                                        <h6 class="mb-1">{{ $notification->data['title'] }}</h6>
+                                                                        <p class="fs-13 mb-1 text-wrap">  Spare Part Request - New Action </p>
+                                                                        <div class="small text-muted">
+                                                                            {{ $notification->created_at->diffForHumans() }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    @else
                                                     @if($notification->data['status'] == 'New')
 
                                                         <a class="dropdown-item border-bottom mark-as-read" href="{{$notification->data['clink']}}" data-id="{{ $notification->id }}">
@@ -142,6 +160,7 @@
                                                             </div>
                                                         </div>
                                                     </a>
+                                                    @endif
                                                     @endif
                                                 @empty
 

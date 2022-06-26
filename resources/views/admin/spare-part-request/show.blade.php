@@ -74,23 +74,35 @@
                                             <span class="t-text-slate-500 t-text-sm">{{ $item->sparePart->code }}</span>
                                         </td>
                                         <td class="t-text-lg">
-                                            <input type="text" class='form-control quantityInput liveInput' value='{{ $item->quantity }}' id='quantity-{{ $item->id }}' name='q-{{ $item->id }}' data-iid='{{ $item->id }}' placeholder='Quantity'>
+                                            <input type="text" class='form-control quantityInput liveInput' value='{{ $item->quantity }}' id='quantity-{{ $item->id }}' name='q-{{ $item->id }}' data-iid='{{ $item->id }}' placeholder='Quantity' @if($sparePartRequest->status != 'New' && $sparePartRequest->status != 'Rejected' && $sparePartRequest->status != 'Waiting for Approval') disabled @endif>
                                         </td>
                                         <td class="t-text-lg">
-                                            <input type='text' class='form-control priceInput liveInput' value='{{ $item->price }}' id='price-{{ $item->id }}' name='p-{{ $item->id }}' data-iid='{{ $item->id }}' placeholder='Unit Price'>
+                                            <input type='text' class='form-control priceInput liveInput' value='{{ $item->price }}' id='price-{{ $item->id }}' name='p-{{ $item->id }}' data-iid='{{ $item->id }}' placeholder='Unit Price' @if($sparePartRequest->status != 'New' && $sparePartRequest->status != 'Rejected' && $sparePartRequest->status != 'Waiting for Approval') disabled @endif>
                                         </td>
                                         <td class="t-text-lg">
                                             <span id='total-{{ $item->id }}'> {{ number_format($item->quantity * $item->price,2) }} </span>
                                         </td>
                                         <td class="t-text-lg">
-                                            <input type='date' class='form-control liveInput' id='date-{{ $item->id }}' name='d-{{ $item->id }}' data-iid='{{ $item->id }}' value='{{ $item->due_date ? \Carbon\Carbon::parse($item->due_date)->format("Y-m-d") : date("Y-m-d") }}'>
+                                            <input type='date' class='form-control liveInput' id='date-{{ $item->id }}' name='d-{{ $item->id }}' data-iid='{{ $item->id }}' value='{{ $item->due_date ? \Carbon\Carbon::parse($item->due_date)->format("Y-m-d") : date("Y-m-d") }}' @if($sparePartRequest->status != 'New' && $sparePartRequest->status != 'Rejected' && $sparePartRequest->status != 'Waiting for Approval') disabled @endif>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                    <input type="hidden" name="items" id="items" value="{{ json_encode($sparePartRequest->items) }}">
+                    <div class="t-flex t-flex-col t-gap-2 t-mb-8">
+                        <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
+                            <span class="t-font-bold">Total Price (₺)</span>
+                            <span class="t-font-semibold" id='totalPrice'>₺ {{ number_format($sparePartRequest->total, 2) }}</span>
+                            <input type='hidden' name='total' value="{{ $sparePartRequest->total }}" />
+                        </div>
+
+                        <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
+                            <span class="t-font-bold">Discounted Price (₺)</span>
+                            <input type='text' class='form-control' value='{{ number_format($sparePartRequest->discounted_total, 2) }}' name='discounted_total' placeholder='Discounted Total' id="discounted_total" @if($sparePartRequest->status != 'New' && $sparePartRequest->status != 'Rejected' && $sparePartRequest->status != 'Waiting for Approval') disabled @endif>
+                        </div>
+                    </div>
+                    <input type="hidden" name="items" id="items" value="{{ json_encode($sparePartRequest->items) }}" />
                     @if($sparePartRequest->status == 'Approved')
                         <label>Tracking Number: </label>
                         <input type='text' class='form-control' style='margin-bottom: 5px;' name='tracking_number' placeholder='Tracking Number'>
@@ -125,7 +137,13 @@
             item.price = price;
             item.due_date = date;
             $('#items').val(JSON.stringify(items));
+
+
+            const totalPrice = items.reduce((acc, item) => acc + item.quantity * item.price, 0);
+            $("#totalPrice").text("₺ " + totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#discounted_total").val(totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
         }
         $('.liveInput').on('change', changeInput);
+        $('.liveInput').on('keyup', changeInput);
     </script>
 @endsection

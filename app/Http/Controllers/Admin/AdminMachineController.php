@@ -853,6 +853,7 @@ class AdminMachineController extends Controller
         $sparePartRequest = SparePartRequests::where('id', $id)->findOrFail($id);
         if($sparePartRequest->status == 'New' || $sparePartRequest->status == 'Rejected' || $sparePartRequest->status == 'Waiting for Approval'){
             $items = json_decode($rq->items, true);
+            $total = 0;
             foreach($items as $item) {
                 $sparePartRequestItem = SparePartRequestItems::find($item['id']);
                 $sparePartRequestItem->update([
@@ -860,7 +861,10 @@ class AdminMachineController extends Controller
                     'price' => $item['price'],
                     'due_date' => $item['due_date'],
                 ]);
+                $total += $item['price'] * $item['quantity'];
             }
+            $sparePartRequest->discounted_total = str_replace(",","",$rq->discounted_total);
+            $sparePartRequest->total = $total;
             $sparePartRequest->status = 'Waiting for Approval';
         } else if($sparePartRequest->status == 'Approved'){
             if($rq->tracking_number == '') {

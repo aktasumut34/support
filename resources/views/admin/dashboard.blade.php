@@ -67,161 +67,186 @@
         <a href="{{route('notificationpage')}}" class="btn btn-primary btn-sm">View All</a>
     </div>
     @foreach( auth()->user()->unreadNotifications()->paginate(2) as $notification)
-        @if($notification->data['status'] == 'New')
-        <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
-            <div class="alert alert-primary" role="alert">
+        @if(isset($notification->data['sprprt']))
+            <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-primary" role="alert">
 
-                <div class="d-flex align-items-center">
-                    <div class="">
-                        <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="ps-3">
-                            <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
-                            <p class="fs-13 mb-1 text-wrap">
-                                @if(isset($notification->data['sprprt']))
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                                <p class="fs-13 mb-1 text-wrap">
 
-                                Spare Part Requests - New Action
-
-                                @else
-                                {{trans('langconvert.adminmenu.newticket')}} {{ $notification->data['ticket_id'] }}
-                                @endif
-                            </p>
-                            <div class="small" style="color: white;">
-                                {{ $notification->created_at->diffForHumans() }}
+                                    Spare Part Requests - New Action
+                                </p>
+                                <div class="small" style="color: white;">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
-        @endif
-        @if($notification->data['status'] == 'Closed')
-        <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
-            <div class="alert alert-danger" role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="">
-                        <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="ps-3">
-                            <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
-                            <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.closeticket')}} {{ $notification->data['ticket_id'] }}</p>
-                            <div class="small" style="text-white">
-                                {{ $notification->created_at->diffForHumans() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        @endif
-        @if($notification->data['status'] == 'On-Hold')
+            </a>
+        @else
+            @if($notification->data['status'] == 'New')
+            <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-primary" role="alert">
 
-        <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
-            <div class="alert alert-info" role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="">
-                        <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="ps-3">
-                            <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
-                            <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.onholdticket')}} {{ $notification->data['ticket_id'] }}</p>
-                            <div class="small text-muted">
-                                {{ $notification->created_at->diffForHumans() }}
-                            </div>
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        @endif
-        @if($notification->data['status'] == 'Re-Open')
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                                <p class="fs-13 mb-1 text-wrap">
+                                    @if(isset($notification->data['sprprt']))
 
-        <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
-            <div class="alert alert-info" role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="">
-                        <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="ps-3">
-                            <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
-                            <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.reopenticket')}} {{ $notification->data['ticket_id'] }}</p>
-                            <div class="small text-muted">
-                                {{ $notification->created_at->diffForHumans() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        @endif
-        @if($notification->data['status'] == 'Inprogress')
+                                    Spare Part Requests - New Action
 
-        <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
-            <div class="alert alert-info" role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="">
-                        <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="ps-3">
-                            <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
-                            <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.repliedticket')}} {{ $notification->data['ticket_id'] }}</p>
-                            <div class="small text-muted">
-                                {{ $notification->created_at->diffForHumans() }}
+                                    @else
+                                    {{trans('langconvert.adminmenu.newticket')}} {{ $notification->data['ticket_id'] }}
+                                    @endif
+                                </p>
+                                <div class="small" style="color: white;">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
-        @endif
-        @if($notification->data['status'] == 'overdue')
+            </a>
+            @endif
+            @if($notification->data['status'] == 'Closed')
+            <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-danger" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                                <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.closeticket')}} {{ $notification->data['ticket_id'] }}</p>
+                                <div class="small" style="text-white">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            @endif
+            @if($notification->data['status'] == 'On-Hold')
 
-        <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
-            <div class="alert alert-info" role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="">
-                        <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="ps-3">
-                            <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
-                            <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.overdueticket')}} {{ $notification->data['ticket_id'] }}</p>
-                            <div class="small text-muted">
-                                {{ $notification->created_at->diffForHumans() }}
+            <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-info" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                                <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.onholdticket')}} {{ $notification->data['ticket_id'] }}</p>
+                                <div class="small text-muted">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
-        @endif
-        @if ($notification->data['status'] == 'mail')
+            </a>
+            @endif
+            @if($notification->data['status'] == 'Re-Open')
 
-        <a class="mark-as-read" href="#" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
-            <div class="alert alert-info" role="alert">
-                <div class="d-flex ">
-                    <div class="">
-                        <span class="avatar avatar-md brround align-self-center cover-image" data-image-src="../../assets/images/users/1.jpg"></span>
-                    </div>
-                    <div class="d-flex">
-                        <div class="ps-3">
-                            <h6 class="mb-1"> {{$notification->data['mailsubject']}}</h6>
-                            <p class="fs-13 mb-1 text-wrap">
-                                {{Str::limit($notification->data['mailtext'], '100', '.......')}}
-                            </p>
-                            <div class="small text-muted">
-                                {{ $notification->created_at->diffForHumans() }}
+            <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-info" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                                <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.reopenticket')}} {{ $notification->data['ticket_id'] }}</p>
+                                <div class="small text-muted">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+            @endif
+            @if($notification->data['status'] == 'Inprogress')
+
+            <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-info" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                                <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.repliedticket')}} {{ $notification->data['ticket_id'] }}</p>
+                                <div class="small text-muted">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            @endif
+            @if($notification->data['status'] == 'overdue')
+
+            <a class="mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-info" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                                <p class="fs-13 mb-1 text-wrap"> {{trans('langconvert.adminmenu.overdueticket')}} {{ $notification->data['ticket_id'] }}</p>
+                                <div class="small text-muted">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            @endif
+            @if ($notification->data['status'] == 'mail')
+
+            <a class="mark-as-read" href="#" data-id="{{ $notification->id }}" style="margin-bottom: .5em;">
+                <div class="alert alert-info" role="alert">
+                    <div class="d-flex ">
+                        <div class="">
+                            <span class="avatar avatar-md brround align-self-center cover-image" data-image-src="../../assets/images/users/1.jpg"></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ps-3">
+                                <h6 class="mb-1"> {{$notification->data['mailsubject']}}</h6>
+                                <p class="fs-13 mb-1 text-wrap">
+                                    {{Str::limit($notification->data['mailtext'], '100', '.......')}}
+                                </p>
+                                <div class="small text-muted">
+                                    {{ $notification->created_at->diffForHumans() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            @endif
         @endif
     @endforeach
     </div>

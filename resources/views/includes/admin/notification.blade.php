@@ -9,6 +9,26 @@
         <div class="header-dropdown-list message-menu" id="message-menu">
             @if(auth()->user())
             @forelse( auth()->user()->unreadNotifications()->paginate(2) as $notification)
+            @if(isset($notification->data['sprprt']))
+            <a class="dropdown-item border-bottom mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}">
+                <div class="d-flex align-items-center">
+                    <div class="">
+                        <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20 text-success"></i></span>
+                    </div>
+                    <div class="d-flex">
+                        <div class="ps-3">
+                            <h6 class="mb-1">{{ Str::limit($notification->data['title'], '30') }}</h6>
+                            <p class="fs-13 mb-1 text-wrap">
+                                Spare Part Requests - New Action
+                            </p>
+                            <div class="small text-muted">
+                                {{ $notification->created_at->diffForHumans() }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            @else
             @if($notification->data['status'] == 'New')
 
             <a class="dropdown-item border-bottom mark-as-read" href="{{$notification->data['link']}}" data-id="{{ $notification->id }}">
@@ -151,6 +171,7 @@
                     </div>
                 </div>
             </a>
+            @endif
             @endif
             @empty
 

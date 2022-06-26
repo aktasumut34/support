@@ -209,6 +209,10 @@ class SparePartController extends Controller
         else if($rq->status == 'Reject') $sparePartRequest->status = 'Rejected';
         else if($rq->status == 'Cancel') $sparePartRequest->status = 'Cancelled';
         $sparePartRequest->save();
+        $admins = User::get();
+        foreach ($admins as $admin) {
+            $admin->notify(new SparePartRequestNotification($sparePartRequest));
+        }
         return redirect()
             ->route('spare-part-request')
             ->with('success', 'Spare Part Request Updated Successfully');

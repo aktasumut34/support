@@ -164,8 +164,12 @@
   margin-top: 1rem
 }
 
-.t-mt-2 {
-  margin-top: 0.5rem
+.t-mb-2 {
+  margin-bottom: 0.5rem
+}
+
+.t-mb-8 {
+  margin-bottom: 2rem
 }
 
 .t-flex {
@@ -202,10 +206,6 @@
 
 .t-grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr))
-}
-
-.t-grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr))
 }
 
 .t-flex-col {
@@ -309,10 +309,6 @@
   padding-bottom: 1rem
 }
 
-.t-pt-5 {
-  padding-top: 1.25rem
-}
-
 .t-pt-2 {
   padding-top: 0.5rem
 }
@@ -356,14 +352,6 @@
 
 .t-font-normal {
   font-weight: 400
-}
-
-.t-leading-3 {
-  line-height: .75rem
-}
-
-.t-leading-4 {
-  line-height: 1rem
 }
 
 .t-leading-5 {

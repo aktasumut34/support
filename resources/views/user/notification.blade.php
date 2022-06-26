@@ -42,6 +42,24 @@
                         <div class="col-md-12">
                             @if(auth()->user())
                             @forelse( auth()->user()->notifications as $notification)
+                            @if(isset($notification->data['sprprt']))
+                                <div class="card readmores mb-3">
+                                    <div class="card-body p-3">
+                                        <div class="d-flex end">
+                                            <div class="text-center me-3">
+                                                <span class="bg-success-transparent brround fs-12 notifications"><i class="feather  feather-bell sidemenu_icon fs-20"></i></span>
+                                            </div>
+                                            <div class="me-3  mt-1 d-block">
+                                                <a href="{{$notification->data['clink']}}" data-id="{{ $notification->id }}">
+                                                    <p class="mb-0 fs-13  mark-as-read"><span class="font-weight-semibold"> {{$notification->data['title'] }} </span> <span class="text-muted"> ({{ $notification->created_at->diffForHumans() }})</span></p>
+                                                    <small>
+                                                        Spare Part Request - New Action
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
                             @if($notification->data['status'] == 'New')
 
                             <div class="card readmores mb-3">
@@ -170,6 +188,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             @endif
                             @empty
 
