@@ -9,6 +9,7 @@ use App\Models\Apptitle;
 use App\Models\Footertext;
 use App\Models\LineupDocuments;
 use App\Models\Seosetting;
+use App\Models\Ticket\Ticket;
 use App\Models\Pages;
 use App\Models\Machines;
 use App\Models\Lineups;
@@ -1075,5 +1076,12 @@ class AdminMachineController extends Controller
         $data['sparePartRequest'] = $sparePartRequest;
         $pdf = PDF::loadView('pdf-generators.sparepart', $data);
         return $pdf->download('SparePartRequest-'.$sparePartRequest->request_no.'.pdf');
+    }
+
+    public function generateTicketPdf($id) {
+        $ticket = Ticket::with('cust', 'comms.user', 'category')->where('ticket_id',$id)->first();
+        $data['ticket'] = $ticket;
+        $pdf = PDF::loadView('pdf-generators.ticket', $data);
+        return $pdf->download('Ticket-'.$ticket->ticket_id.'.pdf');
     }
 }

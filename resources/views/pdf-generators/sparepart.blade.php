@@ -214,18 +214,6 @@
         table.totals-table tr.totals td.totals-total {
             width: 14.5%;
         }
-
-        #paid-seal {
-            color: #fff;
-            background: rgba(69, 219, 59, .4);
-            font-size: 64px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: rotate(-45deg) translate(-50%, -50%);
-            text-align: center;
-            padding: 0 10px;
-        }
     </style>
 </head>
 

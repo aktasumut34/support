@@ -42,7 +42,7 @@ class Ticket extends Model implements HasMedia
     {
         return $this->belongsTo(Customer::class, 'cust_id');
     }
-    
+
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -58,6 +58,10 @@ class Ticket extends Model implements HasMedia
     public function comments()
     {
         return $this->hasMany(Comment::class)->latest('created_at');
+    }
+    public function comms()
+    {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'asc');
     }
     public function category()
     {
