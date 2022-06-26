@@ -36,6 +36,9 @@ Route::middleware(ProtectAgainstSpam::class)->group(function () {
                 Route::post('/change-password', 'ChangepasswordController@changePassword');
 
                 Route::middleware('auth', 'admin.auth')->group(function () {
+                    Route::get('/generate-sparepart-pdf/{id}', 'AdminMachineController@generateSparepartPdf');
+                    Route::get('/generate-ticket-pdf/{id}', 'AdminMachineController@generateTicketPdf');
+
                     Route::get('/mark-as-read', 'AdminDashboardController@markNotification')->name('admin.markNotification');
                     Route::get('/mark-all-as-read', 'AdminDashboardController@markAllNotification')->name('admin.markAllNotification');
                     Route::get('/', 'AdminDashboardController@index');

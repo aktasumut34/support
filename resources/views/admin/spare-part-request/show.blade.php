@@ -14,11 +14,12 @@
     <!-- Customer Edit -->
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card t-min-h-[50vh] mb-0">
-            <div class="card-header d-flex border-0">
+            <div class="card-header border-0 t-flex t-justify-between">
                 <h4 class="card-title">
                     <span class="t-font-normal">Spare Part Request:</span>
                     <span class="t-font-bold">{{ $sparePartRequest->request_no }}</span>
                 </h4>
+                <a target="_blank" href="/admin/generate-sparepart-pdf/{{ $sparePartRequest->id }}" class="btn btn-primary">Generate PDF</a>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('sparepartrequestupdate', $sparePartRequest->id) }}">

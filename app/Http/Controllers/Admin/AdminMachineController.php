@@ -20,7 +20,7 @@ use App\Models\MachineSpareParts;
 use App\Notifications\SparePartRequestNotification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use File;
 use Image;
 use DataTables;
@@ -1068,5 +1068,12 @@ class AdminMachineController extends Controller
         $lineupDocument = LineupDocuments::findOrFail($id);
         $lineupDocument->delete();
         return response()->json(['error' => 'Lineup Document deleted successfully.']);
+    }
+
+    public function generateSparepartPdf($id) {
+        $sparePartRequest = SparePartRequests::with('customer', 'items.customerLineupMachine.machine', 'items.sparePart')->where('id',$id)->first();
+        $data['sparePartRequest'] = $sparePartRequest;
+        $pdf = PDF::loadView('pdf-generators.sparepart', $data);
+        return $pdf->download('SparePartRequest-'.$sparePartRequest->request_no.'.pdf');
     }
 }
