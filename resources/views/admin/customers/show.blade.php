@@ -311,8 +311,10 @@
     <script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
 
     <script>
-        let customerLineups = JSON.parse($('#lineUpInput').val() || '[]');;
+        let customerLineups = JSON.parse($('#lineUpInput').val() || '[]');
+
         drawLineups();
+
         $('.modalMachineSwitch').on('change', function() {
             var id = $(this).val();
             if ($(this).is(':checked')) {
@@ -334,6 +336,7 @@
                 $('#editmachineDate-' + id).slideUp();
             }
         });
+
         $('#addLineup').on('click', function() {
             var lineupType = $('#modalLineupType').val();
             var machines = [];
@@ -442,9 +445,9 @@
                             <label style='font-weight: bold;'>Lineup Type</label>
                             <div>${lineup.lineup.name}</div>
                         </div>
-                        <div class='col-md-6'>
-                            <label style='font-weight: bold;'>Machines</label>
-                            <div>
+                        <div class='col-md-6' >
+                            <label style='font-weight: bold; display: flex; gap: 20px; align-items: center;'>Machines</label>
+                            <div class='collapse' id='collapse-${lineup.lineup.id}'>
                                 ${lineup.machines.map((machine) => {
                                 return `
                                                         <div class='lineup-item'>
@@ -461,6 +464,7 @@
                             <div style='flex'>
                                 <button type='button' class='action-btns1 editLineup' data-domid='${lineup.id}'><i class="feather feather-edit text-primary"></i></button>
                                 <button type='button' class='action-btns1 deleteLineup' data-domid='${lineup.id}'><i class="feather feather-trash-2 text-danger"></i></button>
+                                <a class='action-btns1' type='button' data-bs-toggle='collapse' href='#collapse-${lineup.lineup.id}' ><i class="feather feather-eye"></i></a>
                             </div>
 
                         </div>
@@ -490,7 +494,6 @@
 
         });
 
-
         $('body').on('click', '.editLineup', function() {
             var _id = $(this).data("domid");
             $('#editLineup').data('domid', _id);
@@ -509,7 +512,6 @@
         });
 
         $('#editLineup').on('click', function() {
-
             var _id = $(this).data("domid");
             var lineupType = $('#editmodalLineupType').val();
             var machines = [];
@@ -610,16 +612,12 @@
         .lineup-row {
             padding: 15px 0;
         }
-
         .lineup-row:not(:first-child) {
             border-top: 3px solid rgba(236, 148, 25, 1);
-            ;
         }
-
         .lineup-item {
             padding: 10px 0;
         }
-
         .lineup-row .lineup-item:not(:first-child) {
             border-top: 1px solid #ccc;
         }

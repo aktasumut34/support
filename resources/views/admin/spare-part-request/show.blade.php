@@ -56,6 +56,7 @@
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Unit Price (₺)</th>
                                     <th scope="col">Total Price (₺)</th>
+                                    <th scope="col">Due Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,6 +81,9 @@
                                         </td>
                                         <td class="t-text-lg">
                                             <span id='total-{{ $item->id }}'> {{ number_format($item->quantity * $item->price,2) }} </span>
+                                        </td>
+                                        <td class="t-text-lg">
+                                            <input type='date' class='form-control liveInput' id='date-{{ $item->id }}' name='d-{{ $item->id }}' data-iid='{{ $item->id }}' value='{{ $item->due_date ? \Carbon\Carbon::parse($item->due_date)->format("Y-m-d") : date("Y-m-d") }}'>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -109,16 +113,19 @@
             $('.select2').select2();
         });
         let items = JSON.parse($('#items').val());
-        $('.liveInput').on('keyup', function() {
+        const changeInput = function() {
             var id = $(this).data('iid');
             var quantity = $('#quantity-' + id).val();
             var price = $('#price-' + id).val();
+            var date = $('#date-' + id).val();
             var total = quantity * price;
             $('#total-' + id).text(total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
             const item = items.find(item => item.id == id);
             item.quantity = quantity;
             item.price = price;
+            item.due_date = date;
             $('#items').val(JSON.stringify(items));
-        });
+        }
+        $('.liveInput').on('change', changeInput);
     </script>
 @endsection

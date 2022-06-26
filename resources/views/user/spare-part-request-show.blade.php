@@ -69,6 +69,7 @@
                                                          @if ($sparePartRequest->status != 'New')
                                                              <th scope="col">Unit Price (₺)</th>
                                                              <th scope="col">Total Price (₺)</th>
+                                                             <th scope="col">Due Date</th>
                                                          @endif
                                                      </tr>
                                                  </thead>
@@ -92,6 +93,9 @@
                                                                  <td class="t-text-lg">{{ $item->price }}</td>
                                                                  <td class="t-text-lg">
                                                                      {{ number_format($item->price * $item->quantity, 2) }}
+                                                                 </td>
+                                                                 <td class="t-text-lg">
+                                                                     {{ \Carbon\Carbon::parse($item->due_date)->format('d.m.Y') }}
                                                                  </td>
                                                              @endif
                                                          </tr>

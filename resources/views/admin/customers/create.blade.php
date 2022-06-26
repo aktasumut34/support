@@ -448,12 +448,11 @@
                             <div>
                                 ${lineup.machines.map((machine) => {
                                 return `
-                                                        <div class='lineup-item'>
-                                                            <div>${machine.name} (${machine.code || 'N/A'})</div>
-                                                            <div>Serial Number: <b>${machine.serialNumber}</b></div>
-                                                            <div>Register Date: <b>${new Date(machine.registerDate).toLocaleDateString()}</b></div>
-                                                        </div>
-                                                        `;
+                                    <div class='lineup-item'>
+                                        <div>${machine.name} (${machine.code || 'N/A'})</div>
+                                        <div>Serial Number: <b>${machine.serialNumber}</b></div>
+                                        <div>Register Date: <b>${new Date(machine.registerDate).toLocaleDateString()}</b></div>
+                                    </div>`;
                                 }).join('')}
                             </div>
                         </div>

@@ -858,6 +858,7 @@ class AdminMachineController extends Controller
                 $sparePartRequestItem->update([
                     'quantity' => $item['quantity'],
                     'price' => $item['price'],
+                    'due_date' => $item['due_date'],
                 ]);
             }
             $sparePartRequest->status = 'Waiting for Approval';
