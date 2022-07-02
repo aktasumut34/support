@@ -408,6 +408,7 @@
                         </div>
                     </div>
                     <div class="card-footer  ticket-buttons">
+                        <a class="btn btn-danger my-1" href="/admin/generate-ticket-pdf/{{$ticket->ticket_id}}"> <i class="feather feather-file-text"></i> Generate PDF </a>
                         @if($ticket->status == 'Closed')
 
                         <button class="btn btn-secondary my-1" id="reopen" data-id="{{$ticket->id}}"> <i class="feather feather-rotate-ccw"></i> {{trans('langconvert.admindashboard.reopen')}}</button>

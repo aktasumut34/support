@@ -43,9 +43,6 @@ class SparePartController extends Controller
                 ->get();
 
             return DataTables::of($data)
-                ->addColumn('id', function ($data) {
-                    return '<a href="' . route('spare-part-request-show', $data->id) . '">' . $data->id . '</a>';
-                })
                 ->addColumn('subject', function ($data) {
                     $subject = '<a href="' . route('spare-part-request-show', $data->id) . '">' . $data->request_no . '</a>';
                     return $subject;
@@ -83,7 +80,7 @@ class SparePartController extends Controller
                     $button .= '</div>';
                     return $button;
                 })
-                ->rawColumns(['action', 'subject', 'status', 'created_at', 'updated_at', 'id'])
+                ->rawColumns(['action', 'subject', 'status', 'created_at', 'updated_at'])
                 ->addIndexColumn()
                 ->make(true);
         }
@@ -145,9 +142,11 @@ class SparePartController extends Controller
 
         $sparePartRequest = SparePartRequests::create([
             'customer_id' => Auth::guard('customer')->user()->id,
-            'request_no' => Str::upper(Str::random(12)),
+            'request_no' => 'willChange',
             'status' => 'New',
         ]);
+        $sparePartRequest->request_no = 'ELT-YDK-' . $sparePartRequest->id;
+        $sparePartRequest->save();
         foreach ($cart as $item) {
             $lineupMachine = CustomerLineupMachines::where('customer_lineup_id', $item->machine->pivot->customer_lineup_id)
                 ->where('machine_id', $item->machine->pivot->machine_id)

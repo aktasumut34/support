@@ -1,16 +1,11 @@
 @extends('layouts.adminmaster')
 
 @section('styles')
+    <!-- INTERNAl Tag css -->
+    <link href="{{ asset('assets/plugins/taginput/bootstrap-tagsinput.css') }}?v=<?php echo time(); ?>" rel="stylesheet" />
+
     <!-- INTERNAL Sweet-Alert css -->
     <link href="{{ asset('assets/plugins/sweet-alert/sweetalert.css') }}?v=<?php echo time(); ?>" rel="stylesheet" />
-
-
-    <style>
-        .modal-xl {
-            width: 90%;
-            max-width:1200px;
-        }
-    </style>
 @endsection
 
 @section('content')
@@ -24,13 +19,13 @@
     </div>
     <!--End Page header-->
 
-    <!-- Customer Edit -->
+    <!-- Create Customers -->
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header border-0">
-                <h4 class="card-title">{{ trans('langconvert.admindashboard.editcustomer') }}</h4>
+                <h4 class="card-title">{{ trans('langconvert.admindashboard.createcustomer') }}</h4>
             </div>
-            <form method="POST" action="{{ url('/admin/customer/' . $user->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('/admin/customer/create') }}" enctype="multipart/form-data">
                 <div class="card-body">
                     @csrf
 
@@ -40,7 +35,7 @@
                             <div class="form-group">
                                 <label class="form-label">Company Name</label>
                                 <input type="text" class="form-control" name="company_name"
-                                    value="{{ $user->company_name, old('company_name') }}">
+                                    value="{{ old('company_name') }}">
 
                             </div>
                         </div>
@@ -63,47 +58,44 @@
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label class="form-label">Company Address</label>
-                                <textarea class="form-control" name="company_address" placeholder='Company Address'>{{ $user->company_address, old('company_address') }}</textarea>
+                                <textarea class="form-control" name="company_address" placeholder='Company Address'>{{ old('company_name') }}</textarea>
 
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
-                                <label class="form-label">{{ trans('langconvert.admindashboard.firstname') }}</label>
+                                <label class="form-label">{{ trans('langconvert.admindashboard.firstname') }} <span
+                                        class="text-red">*</span></label>
                                 <input type="text" class="form-control @error('firstname') is-invalid @enderror"
-                                    name="firstname" value="{{ $user->firstname, old('firstname') }}">
+                                    name="firstname" value="{{ old('firstname') }}">
                                 @error('firstname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
-                                <label class="form-label">{{ trans('langconvert.admindashboard.lastname') }}</label>
+                                <label class="form-label">{{ trans('langconvert.admindashboard.lastname') }} <span
+                                        class="text-red">*</span></label>
                                 <input type="text" class="form-control @error('lastname') is-invalid @enderror"
-                                    name="lastname" value="{{ $user->lastname, old('lastname') }}">
+                                    name="lastname" value="{{ old('lastname') }}">
                                 @error('lastname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
-                                <label class="form-label">{{ trans('langconvert.admindashboard.username') }}</label>
-                                <input type="text" class="form-control" name="name" value="{{ $user->username }}"
-                                    readonly>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <label
-                                    class="form-label">{{ trans('langconvert.admindashboard.emailaddress') }}</label>
-                                <input type="email @error('email') is-invalid @enderror" class="form-control" name="email"
-                                    Value="{{ $user->email, old('email') }}">
+                                <label class="form-label">{{ trans('langconvert.admindashboard.emailaddress') }}
+                                    <span class="text-red">*</span></label>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -114,9 +106,30 @@
                         </div>
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
+                                <label class="form-label">{{ trans('langconvert.admindashboard.password') }} <small
+                                        class="text-muted"><i>{{ trans('langconvert.admindashboard.copythepassword') }}</i></small></label>
+                                <div class="input-group mb-4">
+                                    <div class="input-group">
+                                        <a href="javascript:void(0)" class="input-group-text">
+                                            <i class="fe fe-eye" aria-hidden="true"></i>
+                                        </a>
+                                        <input class="form-control @error('password') is-invalid @enderror" type="text"
+                                            name="password" value="{{ str_random(10) }}" readonly>
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
                                 <label class="form-label">ACTY Contact No</label>
                                 <input type="text" class="form-control" name="glass_number"
-                                    value="{{ $user->glass_number, old('glass_number') }}">
+                                    value="{{ old('glass_number') }}">
 
                             </div>
                         </div>
@@ -125,7 +138,7 @@
                                 <label
                                     class="form-label">{{ trans('langconvert.admindashboard.mobilenumber') }}</label>
                                 <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                    value="{{ $user->phone, old('phone') }}">
+                                    value="{{ old('phone') }}">
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -134,29 +147,11 @@
 
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">{{ trans('langconvert.admindashboard.status') }}</label>
-                                <select class="form-control select2" data-placeholder="Select Status" name="status">
-                                    <option label="Select Status"></option>
-                                    @if ($user->status === '1')
-                                        <option value="{{ $user->status }}"
-                                            @if ($user->status === '1') selected @endif>Active</option>
-                                        <option value="0">Inactive</option>
-                                    @else
-                                        <option value="{{ $user->status }}"
-                                            @if ($user->status === '0') selected @endif>Inactive</option>
-                                        <option value="1">Active</option>
-                                    @endif
-
-                                </select>
-                            </div>
-                        </div>
                         <div class="col-sm-12 col-md-12 mt-4">
                             <div class="form-group">
                                 <h3 class='mb-3'>Customer Line Ups</h3>
-                                <input type="hidden" value="{{ $lineups, old('lineups') }}" name="lineups"
-                                    id="lineUpInput" value="">
+                                <input type="hidden" value="{{ old('lineups') }}" name="lineups" id="lineUpInput"
+                                    value="">
                                 <div id='lineups'></div>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#lineUpModal">
@@ -166,18 +161,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="col-md-12 card-footer">
                     <div class="form-group float-end">
                         <input type="submit" class="btn btn-secondary"
-                            value="{{ trans('langconvert.admindashboard.savechanges') }}"
+                            value="{{ trans('langconvert.admindashboard.createcustomer') }}"
                             onclick="this.disabled=true;this.form.submit();">
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <!-- End Customer Edit -->
-
+    <!-- Create Customers -->
     <!-- Modal -->
     <div class="modal fade" id="lineUpModal" tabindex="-1" aria-labelledby="lineUpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
@@ -192,20 +186,48 @@
                         <select class="form-control select2-show-search select2" data-placeholder="Select Lineup Type"
                             name="lineup_type" id="modalLineupType">
                             <option label="Select Lineup Type"></option>
-                            @foreach ($lineupsToSelect as $lineupToSelect)
-                                <option value="{{ $lineupToSelect->id }}">{{ $lineupToSelect->name }}</option>
+                            @foreach ($lineups as $lineup)
+                                <option value="{{ $lineup->id }}">{{ $lineup->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-sm-12 col-md-12" style="margin-bottom: 1em; border-bottom: 1px solid #f0f0f0; padding-bottom: 1em;">
+                    <div class="col-sm-12 col-md-12">
                         <label class="form-label">{{ trans('langconvert.usermenu.machines') }}</label>
-                        <button class="btn btn-primary" id="addMachine">Add Machine</button>
+                        <div class='row'>
+                            @foreach ($machines as $machine)
+                                <div class="form-group col-sm-6 col-lg-4 col-xl-3"
+                                    style="display: flex; flex-direction: column;">
+                                    <div class="switch_section" style="height: 50px;">
+                                        <div class="switch-toggle d-flex mt-4">
+                                            <a class="onoffswitch2">
+                                                <input type="checkbox" id="onoffswitch{{ $machine->id }}"
+                                                    value="{{ $machine->id }}"
+                                                    class="toggle-class onoffswitch2-checkbox modalMachineSwitch"
+                                                    name="modalMachines[]">
+
+                                                <label for="onoffswitch{{ $machine->id }}"
+                                                    class="toggle-class onoffswitch2-label"></label>
+                                            </a>
+                                            <div class="ps-3">
+                                                <label class="form-label">{{ $machine->name }}
+                                                    ({{ $machine->code ? $machine->code : 'N/A' }})
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input data-name='{{ $machine->name }}' data-code='{{ $machine->code }}'
+                                        type="text" class="form-control serialNumberInputs" style='display: none'
+                                        id="serialNumber-{{ $machine->id }}" placeholder="Serial Number">
+                                    <input type="date" class="form-control dateInputs" style='display: none; margin-top: .5em;'
+                                        id="machineDate-{{ $machine->id }}" placeholder="Date">
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
-                    <div id="machinesArea"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="addLineup" data-domid='-1'>Add Lineup</button>
+                    <button type="button" class="btn btn-primary" id="addLineup">Add Lineup</button>
                 </div>
             </div>
         </div>
@@ -224,43 +246,51 @@
                         <select class="form-control select2-show-search select2" data-placeholder="Select Lineup Type"
                             name="lineup_type" id="editmodalLineupType">
                             <option label="Select Lineup Type"></option>
-                            @foreach ($lineupsToSelect as $lineupToSelect)
-                                <option value="{{ $lineupToSelect->id }}">{{ $lineupToSelect->name }}</option>
+                            @foreach ($lineups as $lineup)
+                                <option value="{{ $lineup->id }}">{{ $lineup->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-sm-12 col-md-12" style="margin-bottom: 1em; border-bottom: 1px solid #f0f0f0; padding-bottom: 1em;">
+                    <div class="col-sm-12 col-md-12">
                         <label class="form-label">{{ trans('langconvert.usermenu.machines') }}</label>
-                        <button class="btn btn-primary" id="editaddMachine">Add Machine</button>
+                        <div class='row'>
+                            @foreach ($machines as $machine)
+                                <div class="form-group col-sm-6 col-lg-4 col-xl-3"
+                                    style="display: flex; flex-direction: column;">
+                                    <div class="switch_section" style="height: 50px;">
+                                        <div class="switch-toggle d-flex mt-4">
+                                            <a class="onoffswitch2">
+                                                <input type="checkbox" id="editonoffswitch{{ $machine->id }}"
+                                                    value="{{ $machine->id }}"
+                                                    class="toggle-class onoffswitch2-checkbox editmodalMachineSwitch"
+                                                    name="editmodalMachines[]">
+
+                                                <label for="editonoffswitch{{ $machine->id }}"
+                                                    class="toggle-class onoffswitch2-label"></label>
+                                            </a>
+                                            <div class="ps-3">
+                                                <label class="form-label">{{ $machine->name }}
+                                                    ({{ $machine->code ? $machine->code : 'N/A' }})
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input data-name='{{ $machine->name }}' data-code='{{ $machine->code }}'
+                                        type="text" class="form-control editserialNumberInputs" style='display: none'
+                                        id="editserialNumber-{{ $machine->id }}" placeholder="Serial Number">
+                                    <input type="date" class="form-control editdateInputs" style='display: none; margin-top: .5em;'
+                                        id="editmachineDate-{{ $machine->id }}" placeholder="Date">
+
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
-                    <div id="editmachinesArea"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="editLineup">Update Lineup</button>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class='row d-none originalRow'>
-        <div class="col-md-4 form-group">
-            <label class="form-label">Machine</label>
-            <select class="form-control" data-placeholder="Select Machine"
-                name="machines[]" id="machineselect-changeme">
-                <option label="Select Machine"></option>
-                @foreach ($machines as $machine)
-                    <option data-name='{{ $machine->name }}' data-code='{{ $machine->code }}' value="{{ $machine->id }}">{{ $machine->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-md-4 form-group">
-            <label class="form-label">Serial Number</label>
-            <input type="text" class="form-control serialNumberInputs" id='serial-changeme' placeholder="Serial Number">
-        </div>
-        <div class="col-md-4 form-group">
-            <label class="form-label">Register Date</label>
-            <input type="date" class="form-control dateInputs" id='date-changeme' style='margin-top: .5em;' placeholder="Date" value="<?php echo date('Y-m-d'); ?>">
         </div>
     </div>
 @endsection
@@ -284,7 +314,27 @@
     <script>
         let customerLineups = JSON.parse($('#lineUpInput').val() || '[]');
         drawLineups();
+        $('.modalMachineSwitch').on('change', function() {
+            var id = $(this).val();
+            if ($(this).is(':checked')) {
+                $('#serialNumber-' + id).slideDown();
+                $('#machineDate-' + id).slideDown();
+            } else {
+                $('#serialNumber-' + id).slideUp();
+                $('#machineDate-' + id).slideUp();
+            }
+        });
 
+        $('.editmodalMachineSwitch').on('change', function() {
+            var id = $(this).val();
+            if ($(this).is(':checked')) {
+                $('#editserialNumber-' + id).slideDown();
+                $('#editmachineDate-' + id).slideDown();
+            } else {
+                $('#editserialNumber-' + id).slideUp();
+                $('#editmachineDate-' + id).slideUp();
+            }
+        });
         $('#addLineup').on('click', function() {
             var lineupType = $('#modalLineupType').val();
             var machines = [];
@@ -296,30 +346,29 @@
                     return machine.serialNumber;
                 });
             });
-            $('.addMachine').each(function() {
-                var id = $(this).data('id');
-                var serialNumber = $('#serial-' + id);
-                var machineDate = $('#date-' + id);
-                var machine = $('#machineselect-' + id).val();
-                var name = $('#machineselect-' + id).find(':selected').data('name');
-                var code = $('#machineselect-' + id).find(':selected').data('code');
-                if (!serialNumber.val() || !machineDate.val()) {
-                    emptySerial = true;
-                    return;
-                } else {
-                    if(serials.indexOf(serialNumber.val()) !== -1 || serialsAll.indexOf(serialNumber.val()) !== -1) {
-                        sameSerial = true;
+            $('.modalMachineSwitch').each(function() {
+                if ($(this).is(':checked')) {
+                    var id = $(this).val();
+                    var serialNumber = $('#serialNumber-' + id);
+                    var machineDate = $('#machineDate-' + id);
+                    if (!serialNumber.val() || !machineDate.val()) {
+                        emptySerial = true;
                         return;
+                    } else {
+                        if(serials.indexOf(serialNumber.val()) !== -1 || serialsAll.indexOf(serialNumber.val()) !== -1) {
+                            sameSerial = true;
+                            return;
+                        }
+                        serials.push(serialNumber.val());
                     }
-                    serials.push(serialNumber.val());
+                    machines.push({
+                        id: id,
+                        name: serialNumber.data('name'),
+                        code: serialNumber.data('code'),
+                        registerDate: machineDate.val(),
+                        serialNumber: serialNumber.val()
+                    });
                 }
-                machines.push({
-                    id: machine,
-                    name: name,
-                    code: code,
-                    registerDate: machineDate.val(),
-                    serialNumber: serialNumber.val()
-                });
             });
             if (emptySerial) {
                 swal({
@@ -371,33 +420,19 @@
                 title: 'Success',
                 text: 'Lineup added successfully!',
             });
+
+            $('.modalMachineSwitch').each(function() {
+                if ($(this).is(':checked')) {
+                    $(this).prop('checked', false);
+                }
+            });
+            $('.serialNumberInputs').val('');
+            $('.serialNumberInputs').slideUp();
+            $('.dateInputs').val('');
+            $('.dateInputs').slideUp();
             $('#modalLineupType').val('').trigger('change');
-            $('#machinesArea').html('');
             bootstrap.Modal.getOrCreateInstance($('#lineUpModal')).hide();
         });
-        function randomString() {
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-            for (var i = 0; i < 16; i++)
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-            return text;
-        }
-
-        $("#addMachine").on('click', function() {
-            let id = randomString();
-            let row = $(".originalRow").clone();
-            row.removeClass('d-none');
-            row.removeClass('originalRow');
-            row.addClass('addMachine');
-            row.data('id', id);
-            let copyHtml = row.prop('innerHTML');
-            copyHtml = copyHtml.replaceAll(/changeme/g, id);
-            row.html(copyHtml);
-            $('#machinesArea').append(row);
-            $('#machineselect-'+id).select2({
-                placeholder: "Select Machine",
-            });
-        })
 
         function drawLineups() {
             var html = '';
@@ -408,17 +443,16 @@
                             <label style='font-weight: bold;'>Lineup Type</label>
                             <div>${lineup.lineup.name}</div>
                         </div>
-                        <div class='col-md-6' >
-                            <label style='font-weight: bold; display: flex; gap: 20px; align-items: center;'>Machines</label>
-                            <div class='collapse' id='collapse-${lineup.id}'>
+                        <div class='col-md-6'>
+                            <label style='font-weight: bold;'>Machines</label>
+                            <div>
                                 ${lineup.machines.map((machine) => {
                                 return `
-                                                        <div class='lineup-item'>
-                                                            <div>${machine.name} (${machine.code || 'N/A'})</div>
-                                                            <div>Serial Number: <b>${machine.serialNumber}</b></div>
-                                                            <div>Register Date: <b>${new Date(machine.registerDate).toLocaleDateString()}</b></div>
-                                                        </div>
-                                                        `;
+                                    <div class='lineup-item'>
+                                        <div>${machine.name} (${machine.code || 'N/A'})</div>
+                                        <div>Serial Number: <b>${machine.serialNumber}</b></div>
+                                        <div>Register Date: <b>${new Date(machine.registerDate).toLocaleDateString()}</b></div>
+                                    </div>`;
                                 }).join('')}
                             </div>
                         </div>
@@ -427,7 +461,6 @@
                             <div style='flex'>
                                 <button type='button' class='action-btns1 editLineup' data-domid='${lineup.id}'><i class="feather feather-edit text-primary"></i></button>
                                 <button type='button' class='action-btns1 deleteLineup' data-domid='${lineup.id}'><i class="feather feather-trash-2 text-danger"></i></button>
-                                <a class='action-btns1' type='button' data-bs-toggle='collapse' href='#collapse-${lineup.id}' ><i class="feather feather-eye"></i></a>
                             </div>
 
                         </div>
@@ -457,47 +490,23 @@
 
         });
 
+
         $('body').on('click', '.editLineup', function() {
             var _id = $(this).data("domid");
             $('#editLineup').data('domid', _id);
             var lineup = customerLineups.find((lineup) => lineup.id == _id);
             $('#editmodalLineupType').val(lineup.lineup.id).trigger('change');
-            $('#editmachinesArea').html('');
+            $('.editserialNumberInputs').val('');
+            $('.editserialNumberInputs').slideUp();
             lineup.machines.forEach((machine) => {
-                let row = $(".originalRow").clone();
-                row.removeClass('d-none');
-                row.removeClass('originalRow');
-                row.addClass('editMachine');
-                row.data('id', machine.id);
-                let copyHtml = row.prop('innerHTML');
-                copyHtml = copyHtml.replaceAll(/changeme/g, machine.id);
-                row.html(copyHtml);
-                $('#editmachinesArea').append(row);
-                $('#machineselect-'+machine.id).select2({
-                    placeholder: "Select Machine",
-                });
-                $('#machineselect-'+machine.id).val(machine.id).trigger('change');
-                $('#date-'+machine.id).val(machine.registerDate);
-                $('#serial-'+machine.id).val(machine.serialNumber);
+                $('#editonoffswitch' + machine.id).prop('checked', true);
+                $('#editserialNumber-' + machine.id).slideDown();
+                $('#editserialNumber-' + machine.id).val(machine.serialNumber);
+                $('#editmachineDate-' + machine.id).slideDown();
+                $('#editmachineDate-' + machine.id).val(machine.registerDate);
             });
             bootstrap.Modal.getOrCreateInstance($('#editlineUpModal')).show();
         });
-
-        $("#editaddMachine").on('click', function() {
-            let id = randomString();
-            let row = $(".originalRow").clone();
-            row.removeClass('d-none');
-            row.removeClass('originalRow');
-            row.addClass('editMachine');
-            row.data('id', id);
-            let copyHtml = row.prop('innerHTML');
-            copyHtml = copyHtml.replaceAll(/changeme/g, id);
-            row.html(copyHtml);
-            $('#editmachinesArea').append(row);
-            $('#machineselect-'+id).select2({
-                placeholder: "Select Machine",
-            });
-        })
 
         $('#editLineup').on('click', function() {
 
@@ -512,30 +521,29 @@
                     if(_id !== lineup.id) return machine.serialNumber;
                 });
             });
-            $('.editMachine').each(function() {
-                var id = $(this).data('id');
-                var serialNumber = $('#serial-' + id);
-                var machineDate = $('#date-' + id);
-                var machine = $('#machineselect-' + id).val();
-                var name = $('#machineselect-' + id).find(':selected').data('name');
-                var code = $('#machineselect-' + id).find(':selected').data('code');
-                if (!serialNumber.val() || !machineDate.val()) {
-                    emptySerial = true;
-                    return;
-                } else {
-                    if(serials.indexOf(serialNumber.val()) !== -1 || serialsAll.indexOf(serialNumber.val()) !== -1) {
-                        sameSerial = true;
+            $('.editmodalMachineSwitch').each(function() {
+                if ($(this).is(':checked')) {
+                    var id = $(this).val();
+                    var serialNumber = $('#editserialNumber-' + id);
+                    var machineDate = $('#editmachineDate-' + id);
+                    if (!serialNumber.val()) {
+                        emptySerial = true;
                         return;
+                    } else {
+                        if(serials.indexOf(serialNumber.val()) !== -1 || serialsAll.indexOf(serialNumber.val()) !== -1) {
+                            sameSerial = true;
+                            return;
+                        }
+                        serials.push(serialNumber.val());
                     }
-                    serials.push(serialNumber.val());
+                    machines.push({
+                        id: id,
+                        name: serialNumber.data('name'),
+                        code: serialNumber.data('code'),
+                        registerDate: machineDate.val(),
+                        serialNumber: serialNumber.val()
+                    });
                 }
-                machines.push({
-                    id: machine,
-                    name: name,
-                    code: code,
-                    registerDate: machineDate.val(),
-                    serialNumber: serialNumber.val()
-                });
             });
             if (emptySerial) {
                 swal({
@@ -584,7 +592,16 @@
                 title: 'Success',
                 text: 'Lineup edited successfully!',
             });
-            $("#editmachinesArea").html('');
+
+            $('.editmodalMachineSwitch').each(function() {
+                if ($(this).is(':checked')) {
+                    $(this).prop('checked', false);
+                }
+            });
+            $('.editserialNumberInputs').val('');
+            $('.editserialNumberInputs').slideUp();
+            $('.editdateInputs').val('');
+            $('.editdateInputs').slideUp();
             $('#editmodalLineupType').val('').trigger('change');
             bootstrap.Modal.getOrCreateInstance($('#editlineUpModal')).hide();
         });
@@ -593,12 +610,16 @@
         .lineup-row {
             padding: 15px 0;
         }
+
         .lineup-row:not(:first-child) {
             border-top: 3px solid rgba(236, 148, 25, 1);
+            ;
         }
+
         .lineup-item {
             padding: 10px 0;
         }
+
         .lineup-row .lineup-item:not(:first-child) {
             border-top: 1px solid #ccc;
         }

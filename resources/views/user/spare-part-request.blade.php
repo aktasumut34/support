@@ -52,7 +52,6 @@
                                                  <thead>
                                                      <tr>
                                                          <th>{{ trans('langconvert.admindashboard.id') }}</th>
-                                                         <th>#{{ trans('langconvert.admindashboard.id') }}</th>
                                                          <th>Request Number</th>
                                                          <th>{{ trans('langconvert.admindashboard.date') }}</th>
                                                          <th>{{ trans('langconvert.admindashboard.status') }}</th>
@@ -122,10 +121,6 @@
                          data: 'id',
                          name: 'id',
                          'visible': false
-                     },
-                     {
-                         data: 'id',
-                         name: 'id'
                      },
                      {
                          data: 'subject',

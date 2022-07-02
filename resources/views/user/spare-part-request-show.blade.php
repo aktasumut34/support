@@ -88,16 +88,25 @@
                                                                  <span
                                                                      class="t-text-slate-500 t-text-sm">{{ $item->sparePart->code }}</span>
                                                              </td>
-                                                             <td class="t-text-lg">{{ $item->quantity }}</td>
-                                                             @if($sparePartRequest->status != 'New')
-                                                                 <td class="t-text-lg">{{ $item->price }}</td>
-                                                                 <td class="t-text-lg">
-                                                                     {{ number_format($item->price * $item->quantity, 2) }}
-                                                                 </td>
-                                                                 <td class="t-text-lg">
-                                                                     {{ \Carbon\Carbon::parse($item->due_date)->format('d.m.Y') }}
-                                                                 </td>
-                                                             @endif
+                                                             @if($item->quantity > 0)
+                                                                <td class="t-text-lg">{{ $item->quantity }}</td>
+                                                                @if($sparePartRequest->status != 'New')
+                                                                    <td class="t-text-lg">{{ $item->price }}</td>
+                                                                    <td class="t-text-lg">
+                                                                        {{ number_format($item->price * $item->quantity, 2) }}
+                                                                    </td>
+                                                                    <td class="t-text-lg">
+                                                                        {{ \Carbon\Carbon::parse($item->due_date)->format('d.m.Y') }}
+                                                                    </td>
+                                                                @endif
+                                                            @else
+                                                                <td class="t-text-lg" style="color: red;">Stokta Yok</td>
+                                                                @if($sparePartRequest->status != 'New')
+                                                                    <td class="t-text-lg"> - </td>
+                                                                    <td class="t-text-lg"> - </td>
+                                                                    <td class="t-text-lg"> - </td>
+                                                                @endif
+                                                            @endif
                                                          </tr>
                                                      @endforeach
                                                  </tbody>
