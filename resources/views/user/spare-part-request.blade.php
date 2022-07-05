@@ -16,7 +16,7 @@
                  <div class="container">
                      <div class="row text-white">
                          <div class="col">
-                             <h1 class="mb-0">Spare Part Requests</h1>
+                             <h1 class="mb-0">{{ trans('langconvert.spare_parts.spare_part_requests') }}</h1>
                          </div>
                      </div>
                  </div>
@@ -38,10 +38,10 @@
                                  <div class="card mb-0">
                                      <div class="card-header d-flex border-0">
                                          <h4 class="card-title">
-                                             Spare Part Requests</h4>
+                                         {{ trans('langconvert.spare_parts.spare_part_requests') }}</h4>
                                          <div class="float-end ms-auto"><a href="{{ route('spare-part-request-new') }}"
                                                  class="btn btn-secondary ms-auto"><i
-                                                     class="fa fa-paper-plane-o me-2"></i>New Spare Part Request</a>
+                                                     class="fa fa-paper-plane-o me-2"></i>{{ trans('langconvert.spare_parts.new_spare_part_request') }}</a>
                                          </div>
                                      </div>
                                      <div class="card-body">
@@ -52,10 +52,10 @@
                                                  <thead>
                                                      <tr>
                                                          <th>{{ trans('langconvert.admindashboard.id') }}</th>
-                                                         <th>Request Number</th>
+                                                         <th>{{ trans('langconvert.spare_parts.request_number') }}</th>
                                                          <th>{{ trans('langconvert.admindashboard.date') }}</th>
                                                          <th>{{ trans('langconvert.admindashboard.status') }}</th>
-                                                         <th>Last Action</th>
+                                                         <th>{{ trans('langconvert.spare_parts.last_action') }}</th>
                                                          <th>{{ trans('langconvert.admindashboard.actions') }}</th>
                                                      </tr>
                                                  </thead>

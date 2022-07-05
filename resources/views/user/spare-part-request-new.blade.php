@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="row text-white">
                     <div class="col">
-                        <h1 class="mb-0">Spare Part Request</h1>
+                        <h1 class="mb-0">{{ trans('langconvert.spare_parts.spare_part_request') }}</h1>
                     </div>
                 </div>
             </div>
@@ -48,11 +48,11 @@
                             <div class="t-flex t-col-span-1 lg:t-col-span-2 t-flex-col t-gap-4">
                                 <div class="t-flex t-flex-col t-gap-4 t-shadow-2xl t-p-4 lg:t-p-8 t-rounded-lg" style="background-color: #fff;" v-for='lineup in lineups'>
                                     <div class="t-flex t-justify-between">
-                                        <div class="t-text-lg lg:t-text-xl 2xl:t-text-2xl t-font-semibold">Line Up: ${
+                                        <div class="t-text-lg lg:t-text-xl 2xl:t-text-2xl t-font-semibold">{{ trans('langconvert.lineups.lineup') }}: ${
                                             lineup.name }$
                                         </div>
                                         <div class="t-flex t-gap-4">
-                                            <input type="text" class="form-control" v-model="lineup.term" placeholder="Search..." />
+                                            <input type="text" class="form-control" v-model="lineup.term" placeholder="{{ trans('langconvert.spare_parts.search') }}..." />
                                             <button class="t-text-2xl t-border-0 t-text-sky-600 t-bg-transparent" @click='toggleLineupShow(lineup)'>
                                                 <i v-if='lineup.show' class="feather feather-chevron-up"></i>
                                                 <i v-else class="feather feather-chevron-down"></i>
@@ -67,8 +67,7 @@
                                                         <div class="t-text-base lg:t-text-lg 2xl:t-text-xl t-text-slate-700 t-font-semibold">
                                                             ${ machine.name }$ - ${ machine.code }$
                                                         </div>
-                                                        <span class="t-text-slate-500">Serial
-                                                            Number:
+                                                        <span class="t-text-slate-500">{{ trans('langconvert.machines.serial_number') }}:
                                                             ${machine.pivot.serial_number}$</span>
                                                     </div>
                                                     <button class="t-text-2xl t-border-0 t-text-sky-600 t-bg-transparent" @click='toggleMachineShow(machine)'>
@@ -99,13 +98,13 @@
 
                                                                         <i class="feather feather-plus"></i> </button>
                                                                 </div>
-                                                                <button class="btn btn-primary" @click='addToCart(machine,spare_part)'>Add</button>
+                                                                <button class="btn btn-primary" @click='addToCart(machine,spare_part)'>{{ trans('langconvert.spare_parts.add') }}</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div v-else>
                                                         <div class="alert alert-info">
-                                                            There are no Spare Part for this machine.
+                                                            {{ trans('langconvert.spare_parts.no_spare_part') }}
                                                         </div>
                                                     </div>
                                                 </template>
@@ -113,7 +112,7 @@
                                         </div>
                                         <div v-else>
                                             <div class="alert alert-info">
-                                                There are no Spare Part for this search query.
+                                                    {{ trans('langconvert.spare_parts.no_spare_part_query') }}
                                             </div>
                                         </div>
                                     </transition-collapse-height>
@@ -130,8 +129,7 @@
                                             <div class="t-text-base lg:t-text-lg 2xl:t-text-xl t-text-slate-700 t-font-semibold">
                                                 ${ cart_item.machine.name }$ - ${ cart_item.machine.code }$
                                             </div>
-                                            <span class="t-text-slate-500">Serial
-                                                Number:
+                                            <span class="t-text-slate-500">{{ trans('langconvert.machines.serial_number') }}:
                                                 ${cart_item.machine.pivot.serial_number}$</span>
                                         </div>
                                         <div class="t-flex t-flex-col t-gap-3" v-if='cart_item.spare_parts'>
@@ -165,12 +163,12 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="hidden" name="cart" :value='cartComputed'>
                                         <button class="btn btn-primary t-mt-4"><i class="feather feather-send"></i>
-                                            Send Request</button>
+                                            {{ trans('langconvert.spare_parts.send_request') }}</button>
                                     </form>
                                 </div>
                                 <div v-else>
                                     <div class="alert alert-info">
-                                        There are no items in your cart.
+                                        {{ trans('langconvert.spare_parts.cart_no_items') }}
                                     </div>
                                 </div>
                             </div>

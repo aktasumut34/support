@@ -47,7 +47,7 @@ background: linear-gradient(0deg, rgba(227, 143, 27, 0.60) 0%, rgba(227, 143, 27
                 <div class="container">
                     <div class="row text-white">
                         <div class="col">
-                            <h1 class="mb-0">Machines & Documents</h1>
+                            <h1 class="mb-0">{{ trans('langconvert.machines.machines_and_documents') }}</h1>
                         </div>
                     </div>
                 </div>
@@ -67,14 +67,14 @@ background: linear-gradient(0deg, rgba(227, 143, 27, 0.60) 0%, rgba(227, 143, 27
                             <div class="row" style="margin-bottom: 45px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
                                     <h2 class="card-title" style="font-size: 2em; margin-bottom: 0;">{{ $lineup->name }}</h2>
-                                    <a href="{{ route('lineup', ['id' => $lineup->id]) }}" class="btn btn-primary">Show Lineup Documents</a>
+                                    <a href="{{ route('lineup', ['id' => $lineup->id]) }}" class="btn btn-primary">{{ trans('langconvert.lineups.show_lineup_documents') }}</a>
                                     <a class='btn btn-secondary' id="collapseLever-{{$lineup->id}}" data-bs-toggle='collapse' href='#collapse-{{$lineup->id}}'>+</a>
                                 </div>
                                 <div class="t-grid t-grid-cols-1 lg:t-grid-cols-3 t-gap-4 t-items-stretch collapse" id="collapse-{{$lineup->id}}" data-handler='collapseLever-{{$lineup->id}}'>
                                     @foreach ($lineup->machines as $machine)
                                         <div class="machine-container" style='position: relative;'>
                                             <div class="machine-overlay">
-                                                <span>Show Documents</span>
+                                                <span>{{ trans('langconvert.machines.show_documents') }}</span>
                                             </div>
                                             <a href="{{ route('machine', ['id' => $machine->id]) }}">
                                                 <div class="card" style="height: 100%">
@@ -82,12 +82,11 @@ background: linear-gradient(0deg, rgba(227, 143, 27, 0.60) 0%, rgba(227, 143, 27
                                                         style="display: flex; flex-direction: column; align-items: start; justify-content: left;">
                                                         <h4 class="card-title">{{ $machine->name }}</h4>
                                                         </h4>
-                                                        <small>Machine Code:
-                                                            <b>{{ $machine->code }}</b></small><small>Serial
-                                                            Number: <b>
+                                                        <small>{{ trans('langconvert.machines.machine_code') }}:
+                                                            <b>{{ $machine->code }}</b></small>
+                                                            <small>{{ trans('langconvert.machines.serial_number') }}: <b>
                                                                 {{ $machine->pivot->serial_number }}</b></small>
-                                                                <small>Register
-                                                            Date: <b>
+                                                                <small>{{ trans('langconvert.machines.register_date') }}: <b>
                                                                 {{ Carbon\Carbon::parse($machine->pivot->register_date)->format('d.m.Y') }}</b></small>
                                                     </div>
                                                     <div class="card-body" style="margin-top: auto;">

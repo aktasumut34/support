@@ -64,7 +64,7 @@ return[
         'deletephoto' => 'Delete photo',
 
         'nonotifies1' => 'There are no notifications. We will notify you when the new notification arrives.',
-        
+
         'machines' => 'Machines',
         'spare_part_request' => 'Spare Part Request'
 
@@ -72,7 +72,7 @@ return[
 
     'adminmenu' => [
 
-        
+
         'createticket' => 'Create Ticket',
         'visitsite' => 'Home Page',
         'alltickets' => 'All Tickets',
@@ -311,7 +311,7 @@ return[
         'secondarycolor' => 'Secondary Color',
         'globallanguage' => 'Global Language Setting',
         'selectlanguage' => 'Select Language',
-        'appglobalsettings' => 'App Global Settings',   
+        'appglobalsettings' => 'App Global Settings',
         'personalsettingadmin' => 'Enable Personal Setting For Admin Panel',
         'personaladminpanel' => '(If you disable this setting, the "Personal Setting" with the "Switch to Dark-Mode" option will disappear from the Admin panel on the profile page.)',
         'personalsettingcustomer' => 'Enable Personal Setting For Customer Panel',
@@ -382,8 +382,8 @@ return[
         'sitekey' => 'Site Key',
         'secretkey' => 'Secret Key',
         'captchasettingfroms' => 'Captcha Setting in Forms',
-        'enablecontactform' => 'Enable On Contact Form', 
-        'enablecontactformcontent' => '(If you enable this captcha setting feature, it will appear on the "Contact Form".)', 
+        'enablecontactform' => 'Enable On Contact Form',
+        'enablecontactformcontent' => '(If you enable this captcha setting feature, it will appear on the "Contact Form".)',
         'enableregisterform' => 'Enable On Register Form',
         'enableregisterformcontent' => '(If you enable this captcha setting feature, it will appear on the "Register Form".)',
         'enableloginform' => 'Enable On Login Form',
@@ -440,7 +440,7 @@ return[
         'block' => 'Block',
         'addipaddress' => 'Add IP Address',
         'addnewipaddress' => 'Add New IP Address',
-        //IP LIST// 
+        //IP LIST//
         //Email to Tickets//
         'enableemailtotickets' => 'Email to tickets Enable/Disable',
         'imaphost' => 'IMAP Host',
@@ -453,8 +453,8 @@ return[
         //Announcement//
         'startdate' => 'Start Date',
         'enddate' => 'End Date',
-        'editanouncement' => 'Edit Announcement',    
-        'addannouncement' => 'Add Announcement',    
+        'editanouncement' => 'Edit Announcement',
+        'addannouncement' => 'Add Announcement',
         'addnewannouncement' => 'Add New Announcement',
         'noticetext' => 'Notice Text ',
          //Announcement//
@@ -473,7 +473,7 @@ return[
         'onhold' => 'On-Hold',
         'total' => 'Total',
         'employeereports' => 'Employee Reports',
-        'rating' => 'Rating',   
+        'rating' => 'Rating',
         'replycount' => 'Reply Count',
         //Reports//
         //new addon's//
@@ -532,7 +532,7 @@ return[
         ],
 
         'userdashboard' => [
-            
+
             'ticketview' => 'Ticket View',
             'ticketdetails' => 'Ticket Details',
             'ticketclosedreopen' => 'This ticket is closed. Do you want to reopen it?',
@@ -624,7 +624,7 @@ return[
             'resetpasswordsend' => 'The password reset link has been sent to your email.',
             'credentialsnotmatch' => 'These credentials do not match our records.',
             'languageupdate' => 'The language has been successfully updated',
-    
+
         ],
 
 
@@ -661,11 +661,11 @@ return[
             'viewonheader' => 'View on header',
             'viewonfooter' => 'View on footer',
             'maincategories' => 'Category',
-            'subcategory' => 'Sub-Category',    
-            'subcategorylist' => 'Subcategory List', 
-            'addsubcategory' => 'Add SubCategory',    
-            'subcategoryname' => 'SubCategory Name',    
-            'addnewsubcategory' => 'Add New SubCategory', 
+            'subcategory' => 'Sub-Category',
+            'subcategorylist' => 'Subcategory List',
+            'addsubcategory' => 'Add SubCategory',
+            'subcategoryname' => 'SubCategory Name',
+            'addnewsubcategory' => 'Add New SubCategory',
             'editsubcategory'   => 'Edit Subcategory',
             'envatoapiassign' => 'Envato Api Assign',
             'assignedpriority' => 'Assigned Priority',
@@ -685,8 +685,54 @@ return[
             'verifyotp' => 'Verify OTP',
             'ticketnotetitle' => 'Don’t have any notes yet',
             'ticketnotedes' => 'Add your notes here',
-            
+
         ],
-        
+
+        'lineups' => [
+            'lineup' => 'Lineup',
+            'lineups' => 'Lineups',
+            'show_lineup_documents' => 'Show Lineup Documents',
+            'lineup_documents' => 'Lineup Documents',
+            'no_documents' => 'There are no documents for this lineup.',
+            'no_videos' => 'There are no videos for this lineup.',
+        ],
+
+        'machines' => [
+            'machine' => 'Machine',
+            'machines_and_documents' => 'Machines & Documents',
+            'show_documents' => 'Show Documents',
+            'machine_code' => 'Machine Code',
+            'serial_number' => 'Serial Number',
+            'register_date' => 'Register Date',
+            'documents' => 'Documents',
+            'videos' => 'Videos',
+            'no_documents' => 'There are no documents for this machine.',
+            'no_videos' => 'There are no videos for this machine.'
+        ],
+
+        'spare_parts' => [
+            'spare_part' => 'Spare Part',
+            'spare_part_request' => 'Spare Part Request',
+            'spare_part_requests' => 'Spare Part Requests',
+            'new_spare_part_request' => 'New Spare Part Request',
+            'request_number' => 'Request Number',
+            'add' => 'Add',
+            'no_spare_part' => 'There are no Spare Part for this machine.',
+            'no_spare_part_query' => 'There are no Spare Part for this search query.',
+            'send_request' => 'Send Request',
+            'cart_no_items' => 'There are no items in your cart.',
+            'search' => 'Search',
+            'status' => 'Status',
+            'request_created_at' => 'Request Created',
+            'last_action' => 'Last Action',
+            'quantity' => 'Quantity',
+            'unit_price' => 'Unit Price (₺)',
+            'total_price' => 'Total Price (₺)',
+            'due_date' => 'Due Date',
+            'out_of_stock' => 'Out of Stock',
+            'approve' => 'Approve',
+            'reject' => 'Reject'
+        ]
+
 
 ];

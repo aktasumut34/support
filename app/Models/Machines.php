@@ -11,12 +11,7 @@ class Machines extends Model
 
     protected $table = 'machines';
     public $timestamps = false;
-    protected $fillable = ['name', 'code', 'image'];
-
-    // public function spare_parts()
-    // {
-    //     return $this->hasMany(SpareParts::class, 'machine_id');
-    // }
+    protected $fillable = ['name', 'name_english' , 'code', 'image'];
 
     public function spare_parts()
     {

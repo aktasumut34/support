@@ -12,7 +12,7 @@
                  <div class="container">
                      <div class="row text-white">
                          <div class="col">
-                             <h1 class="mb-0">Spare Part Requests</h1>
+                             <h1 class="mb-0">{{ trans('langconvert.spare_parts.spare_part_requests') }}</h1>
                          </div>
                      </div>
                  </div>
@@ -34,7 +34,7 @@
                                  <div class="card t-min-h-[50vh] mb-0">
                                      <div class="card-header d-flex border-0">
                                          <h4 class="card-title">
-                                             <span class="t-font-normal">Spare Part Request:</span>
+                                             <span class="t-font-normal">{{ trans('langconvert.spare_parts.spare_part_request') }}:</span>
                                              <span class="t-font-bold">{{ $sparePartRequest->request_no }}</span>
                                          </h4>
                                      </div>
@@ -43,18 +43,18 @@
                                              <div class="t-grid t-grid-cols-1 xl:t-grid-cols-3 t-gap-4">
                                                  <div
                                                      class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                                     <span class="t-font-bold">Status</span>
+                                                     <span class="t-font-bold">{{ trans('langconvert.spare_parts.status') }}</span>
                                                      <span class="t-font-bold">{{ $sparePartRequest->status }}</span>
                                                  </div>
                                                  <div
                                                      class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                                     <span class="t-font-bold">Request Created</span>
+                                                     <span class="t-font-bold">{{ trans('langconvert.spare_parts.request_created_at') }}</span>
                                                      <span
                                                          class="t-font-semibold">{{ $sparePartRequest->created_at->format(setting('date_format')) }}</span>
                                                  </div>
                                                  <div
                                                      class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                                     <span class="t-font-bold">Last Action</span>
+                                                     <span class="t-font-bold">{{ trans('langconvert.spare_parts.last_action') }}</span>
                                                      <span
                                                          class="t-font-semibold">{{ $sparePartRequest->updated_at->diffForHumans() }}</span>
                                                  </div>
@@ -62,14 +62,14 @@
                                              <table class="table-striped table-hover table">
                                                  <thead>
                                                      <tr>
-                                                         <th scope="col">Machine</th>
-                                                         <th scope="col">Machine Serial Number</th>
-                                                         <th scope="col">Spare Part</th>
-                                                         <th scope="col">Quantity</th>
+                                                         <th scope="col">{{ trans('langconvert.machines.machine') }}</th>
+                                                         <th scope="col">{{ trans('langconvert.machines.serial_number') }}</th>
+                                                         <th scope="col">{{ trans('langconvert.spare_parts.spare_part') }}</th>
+                                                         <th scope="col">{{ trans('langconvert.spare_parts.quantity') }}</th>
                                                          @if ($sparePartRequest->status != 'New')
-                                                             <th scope="col">Unit Price (₺)</th>
-                                                             <th scope="col">Total Price (₺)</th>
-                                                             <th scope="col">Due Date</th>
+                                                             <th scope="col">{{ trans('langconvert.spare_parts.unit_price') }}</th>
+                                                             <th scope="col">{{ trans('langconvert.spare_parts.total_price') }}</th>
+                                                             <th scope="col">{{ trans('langconvert.spare_parts.due_date') }}</th>
                                                          @endif
                                                      </tr>
                                                  </thead>
@@ -100,7 +100,7 @@
                                                                     </td>
                                                                 @endif
                                                             @else
-                                                                <td class="t-text-lg" style="color: red;">Stokta Yok</td>
+                                                                <td class="t-text-lg" style="color: red;">{{ trans('langconvert.spare_parts.out_of_stock') }}</td>
                                                                 @if($sparePartRequest->status != 'New')
                                                                     <td class="t-text-lg"> - </td>
                                                                     <td class="t-text-lg"> - </td>
@@ -114,7 +114,7 @@
                                              @if($sparePartRequest->status != 'New')
                                              <div class="t-flex t-flex-col t-gap-2 t-mb-8">
                                                 <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                                    <span class="t-font-bold">Total Price (₺)</span>
+                                                    <span class="t-font-bold">{{ trans('langconvert.spare_parts.total_price') }}</span>
                                                     <span class="t-font-semibold">₺ {{ number_format($sparePartRequest->total, 2) }}</span>
                                                     <input type='hidden' name='total' value="{{ $sparePartRequest->total }}" />
                                                 </div>
@@ -133,8 +133,8 @@
                                                  action="{{ route('spare-part-request-update', ['id' => $sparePartRequest->id]) }}">
                                                     @csrf
                                                  <div class="button-group">
-                                                     <input name="status" type="submit" value="Approve" class="btn btn-outline-success" type="submit" />
-                                                     <input name="status" type="submit" value="Reject" class="btn btn-outline-danger" type="submit" />
+                                                     <input name="status" type="submit" value="{{ trans('langconvert.spare_parts.approve') }}" class="btn btn-outline-success" type="submit" />
+                                                     <input name="status" type="submit" value="{{ trans('langconvert.spare_parts.reject') }}" class="btn btn-outline-danger" type="submit" />
                                                  </div>
                                              </form>
                                              @endif

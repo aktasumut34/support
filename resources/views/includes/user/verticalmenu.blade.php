@@ -239,8 +239,7 @@
                                        </g>
                                        <g id="Car_factory">
                                        </g>
-                                   </svg><span class="side-menu__label">{{ trans('langconvert.usermenu.machines') }}
-                                       & Documents
+                                   </svg><span class="side-menu__label">{{ trans('langconvert.machines.machines_and_documents') }}
                                    </span></a>
                            </li>
                            <li>
@@ -356,7 +355,7 @@
                                        <g id="Car_factory">
                                        </g>
                                    </svg><span
-                                       class="side-menu__label">{{ trans('langconvert.usermenu.spare_part_request') }}
+                                       class="side-menu__label">{{ trans('langconvert.spare_parts.spare_part_request') }}
                                    </span></a>
                            </li>
                        </ul>

@@ -1,3 +1,7 @@
+@php
+    $lang = app()->getLocale();
+@endphp
+
 @extends('layouts.usermaster')
 
 @section('styles')
@@ -27,7 +31,7 @@
                 <div class="container">
                     <div class="row text-white">
                         <div class="col">
-                            <h1 class="mb-0">Machines & Documents</h1>
+                            <h1 class="mb-0">{{ trans('langconvert.machines.machines_and_documents') }}</h1>
                         </div>
                     </div>
                 </div>
@@ -52,12 +56,12 @@
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link active" id="documents-tab" data-bs-toggle="tab"
                                             data-bs-target="#documents" type="button" role="tab" aria-controls="documents"
-                                            aria-selected="true">DOCUMENTS</button>
+                                            aria-selected="true" style='text-transform: uppercase;'>{{ trans('langconvert.machines.documents') }}</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="videos-tab" data-bs-toggle="tab"
                                             data-bs-target="#videos" type="button" role="tab" aria-controls="videos"
-                                            aria-selected="false">VIDEOS</button>
+                                            aria-selected="false" style='text-transform: uppercase;'>{{ trans('langconvert.machines.videos') }}</button>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
@@ -83,7 +87,7 @@
                                                 @endforeach
                                             @else
                                                 <div class="alert alert-info">
-                                                    There are no documents for this machine.
+                                                    {{ trans('langconvert.machines.no_documents') }}
                                                 </div>
                                             @endif
                                         </div>
@@ -109,7 +113,7 @@
                                                 </div>
                                             @else
                                                 <div class="alert alert-info">
-                                                    There are no videos for this machine.
+                                                    {{ trans('langconvert.machines.no_videos') }}
                                                 </div>
                                             @endif
                                         </div>

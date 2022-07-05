@@ -10,7 +10,7 @@
 										<img src="{{asset('uploads/logo/logo/'.$title->image)}}" class="header-brand-img light-logo"
 											alt="{{$title->image}}">
 										@else
-										
+
 										<img src="{{asset('uploads/logo/logo/logo-white.png')}}" class="header-brand-img light-logo"
 											alt="logo">
 										@endif
@@ -19,14 +19,14 @@
 											<img src="{{asset('uploads/logo/darklogo/'.$title->image1)}}" class="header-brand-img desktop-lgo"
 											alt="{{$title->image1}}">
 										@else
-										
+
 										<img src="{{asset('uploads/logo/darklogo/logo.png')}}" class="header-brand-img desktop-lgo"
 											alt="logo">
 
 										@endif
-										
-									
-									
+
+
+
 									</a>
 
 								</div>
@@ -62,21 +62,21 @@
 										@endif
 										@endif
 										@endforeach
-										
+
 										@if (Auth::guard('customer')->check())
 
 										@include('includes.user.notifynotication')
 
 										<li  class="dropdown header-flags text-capitalize">
 											<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-												<span class="">{{ app()->getLocale() }} </span>
+												<span class="">{{ app()->getLocale() == 'Turkce' ? 'Türkçe' : app()->getLocale() }} </span>
 											</a>
 											<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated text-capitalize">
-												
+
 												@foreach(getLanguages() as $lang)
 
 													<a href="{{route('front.set_language', [$lang])}}" class="dropdown-item d-flex fs-13">
-														<span class="">{{ $lang }}</span>
+														<span class="">{{ $lang == 'Turkce' ? 'Türkçe' : $lang }}</span>
 													</a>
 
 												@endforeach
@@ -146,23 +146,23 @@
 
 											<li  class="dropdown header-flags text-capitalize">
 												<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-													<span class="">{{ app()->getLocale() }} </span>
+													<span class="">{{ app()->getLocale() == 'Turkce' ? 'Türkçe' : app()->getLocale() }} </span>
 												</a>
 												<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated text-capitalize">
-													
+
 													@foreach(getLanguages() as $lang)
-	
+
 														<a href="{{route('front.set_language', [$lang])}}" class="dropdown-item d-flex fs-13">
-															<span class="">{{ $lang }}</span>
+															<span class="">{{ $lang == 'Turkce' ? 'Türkçe' : $lang }}</span>
 														</a>
-	
+
 													@endforeach
-	
+
 												</div>
 											</li>
-											
+
 											@if(setting('GUEST_TICKET') == 'yes')
-											
+
 											<li>
 												<span class="menu-btn">
 													<a class="btn btn-secondary m-0" href="{{url('/guest/openticket')}}">
@@ -171,7 +171,7 @@
 													</a>
 												</span>
 											</li>
-											
+
 											@endif
 										@endif
 

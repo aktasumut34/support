@@ -4,7 +4,7 @@
 						<div class="d-flex">
 							<a class="animated-arrow horizontal-navtoggle"><span></span></a>
 							<span class="smallogo">
-								 
+
 								{{--Logo--}}
                                 @if ($title->image == null)
 
@@ -46,13 +46,13 @@
 							<div class="d-flex ms-auto pe-3">
 								<div  class="dropdown header-flags text-uppercase">
 									<a href="#" class="nav-link pe-1 ps-0  dropdown-toggle" data-bs-toggle="dropdown">
-										<span class="">{{ app()->getLocale() }} </span>
+										<span class="">{{ app()->getLocale() == 'Turkce' ? 'Türkçe' : app()->getLocale() }} </span>
 									</a>
 									<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated text-uppercase">
 										@foreach(getLanguages() as $lang)
 
 											<a href="{{route('front.set_language', [$lang])}}" class="dropdown-item d-flex">
-												<span class="">{{ $lang }}</span>
+												<span class="">{{ $lang == 'Turkce' ? 'Türkçe' : $lang }}</span>
 											</a>
 
 										@endforeach
@@ -100,11 +100,11 @@
 											</form>
 											</div>
 										</div>
-										
+
 								@endif
 
-							</div>	
-							
+							</div>
+
 
 						</div>
 					</div>

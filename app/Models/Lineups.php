@@ -10,5 +10,5 @@ class Lineups extends Model
     use HasFactory;
     protected $table = 'lineups';
     public $timestamps = false;
-    protected $fillable = ['name', 'code'];
+    protected $fillable = ['name', 'name_english', 'code'];
 }

@@ -11,7 +11,7 @@ class SpareParts extends Model
 
     protected $table = 'spare_parts';
     public $timestamps = false;
-    protected $fillable = ['name', 'code', 'machine_id', 'size' ,'image'];
+    protected $fillable = ['name', 'name_english', 'code', 'machine_id', 'size' ,'image'];
 
     public function machine()
     {
