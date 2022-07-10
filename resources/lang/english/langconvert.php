@@ -691,14 +691,49 @@ return[
         'lineups' => [
             'lineup' => 'Lineup',
             'lineups' => 'Lineups',
+            'add_lineup' => 'Add Lineup',
+            'edit_lineup' => 'Edit Lineup',
+            'all_lineups' => 'All Lineups',
+            'lineup_name' => 'Lineup Name (Turkish)',
+            'lineup_name_english' => 'Lineup Name (English)',
+            'lineup_code' => 'Lineup Code',
             'show_lineup_documents' => 'Show Lineup Documents',
             'lineup_documents' => 'Lineup Documents',
             'no_documents' => 'There are no documents for this lineup.',
             'no_videos' => 'There are no videos for this lineup.',
+
+            'lineup_documents' => 'Lineup Documents',
+            'add_lineup_document' => 'Add Lineup Document',
+            'edit_lineup_document' => 'Edit Lineup Document',
+            'all_lineup_documents' => 'All Lineup Documents',
+            'document_name' => 'Document Name',
+            'document_type' => 'Document Type',
+            'select_document_type' => 'Select Document Type',
+            'pdf_word_document' => 'PDF / Word Document',
+            'select_lineup' => 'Select Lineup',
+            'lineup_document' => 'Lineup Document',
+
+            'lineups_and_machines' => 'Lineups & Machines',
+
+            'lineup_document_deleted' => 'Lineup Document Deleted Successfully',
+
+            'lineup_created' => 'Lineup Created Successfully',
+            'lineup_updated' => 'Lineup Updated Successfully',
+            'lineup_deleted' => 'Lineup Deleted Successfully',
+
+            'document_type_error' => 'Lineup document can only be pdf,doc,docx,xls,xlsx,mp4 format.',
         ],
 
         'machines' => [
             'machine' => 'Machine',
+            'machines' => 'Machines',
+            'add_machine' => 'Add Machine',
+            'edit_machine' => 'Edit Machine',
+            'all_machines' => 'All Machines',
+            'machine_name' => 'Machine Name (Turkish)',
+            'machine_name_english' => 'Machine Name (English)',
+            'machine_code' => 'Machine Code',
+            'machine_image' => 'Machine Image',
             'machines_and_documents' => 'Machines & Documents',
             'show_documents' => 'Show Documents',
             'machine_code' => 'Machine Code',
@@ -707,15 +742,47 @@ return[
             'documents' => 'Documents',
             'videos' => 'Videos',
             'no_documents' => 'There are no documents for this machine.',
-            'no_videos' => 'There are no videos for this machine.'
+            'no_videos' => 'There are no videos for this machine.',
+
+            'machine_documents' => 'Machine Documents',
+            'add_machine_document' => 'Add Machine Document',
+            'edit_machine_document' => 'Edit Machine Document',
+            'all_machine_documents' => 'All Machine Documents',
+            'document_name' => 'Document Name',
+            'document_type' => 'Document Type',
+            'select_document_type' => 'Select Document Type',
+            'pdf_word_document' => 'PDF / Word Document',
+            'select_machine' => 'Select Machine',
+            'machine_document' => 'Machine Document',
+
+            'machine_document_deleted' => 'Machine Document Deleted Successfully',
+
+            'machine_created' => 'Machine Created Successfully',
+            'machine_updated' => 'Machine Updated Successfully',
+            'machine_deleted' => 'Machine Deleted Successfully',
+
+            'document_type_error' => 'Machine document can only be pdf,doc,docx,xls,xlsx,mp4 format.',
         ],
 
         'spare_parts' => [
             'spare_part' => 'Spare Part',
+            'spare_parts' => 'Spare Parts',
+            'all_spare_parts' => 'All Spare Parts',
             'spare_part_request' => 'Spare Part Request',
             'spare_part_requests' => 'Spare Part Requests',
+            'add_spare_part' => 'Add Spare Part',
+            'edit_spare_part' => 'Edit Spare Part',
+            'spare_part_name' => 'Spare Part Name (Turkish)',
+            'spare_part_name_english' => 'Spare Part Name (English)',
+            'spare_part_code' => 'Spare Part Code',
+            'spare_part_image' => 'Spare Part Image',
+            'select_machine' => 'Select Machine',
+            'size_info' => 'Size Info',
+            'spare_part_request_number' => 'Request Number',
+            'all_spare_part_requests' => 'All Spare Part Requests',
             'new_spare_part_request' => 'New Spare Part Request',
             'request_number' => 'Request Number',
+            'generate_pdf' => 'Generate PDF',
             'add' => 'Add',
             'no_spare_part' => 'There are no Spare Part for this machine.',
             'no_spare_part_query' => 'There are no Spare Part for this search query.',
@@ -728,11 +795,24 @@ return[
             'quantity' => 'Quantity',
             'unit_price' => 'Unit Price (₺)',
             'total_price' => 'Total Price (₺)',
+            'discounted_price' => 'Discounted Price (₺)',
             'due_date' => 'Due Date',
             'out_of_stock' => 'Out of Stock',
             'approve' => 'Approve',
-            'reject' => 'Reject'
+            'reject' => 'Reject',
+            'ship_now' => 'Ship Now',
+            'tracking_number' => 'Tracking Number',
+
+            'request_created_successfully' => 'Spare Part Request Created Successfully',
+            'request_updated_successfully' => 'Spare Part Request Updated Successfully',
+            'request_not_found' => 'Spare Part Request Not Found',
+
+            'spare_part_created' => 'Spare Part Created Successfully',
+            'spare_part_updated' => 'Spare Part Updated Successfully',
+            'spare_part_deleted' => 'Spare Part Deleted Successfully',
+
+            'spare_part_request_updated' => 'Spare Part Request Updated Successfully',
+
+            'valid_tracking_number' => 'Please enter valid tracking number.',
         ]
-
-
 ];

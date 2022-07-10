@@ -56,7 +56,7 @@ class AdminMachineController extends Controller
                 })
                 ->addColumn('name', function ($data) {
                     return '<div><a href="#" class="h5">' .
-                        Str::limit($data->name, '40') .
+                        Str::limit(getName($data), '40') .
                         '</a></div>
                     <small class="fs-12 text-muted"> <span class="font-weight-normal1">' .
                         Str::limit($data->code, '40') .
@@ -96,14 +96,16 @@ class AdminMachineController extends Controller
         $this->authorize('Lineup Create');
         $request->validate([
             'name' => 'required|string|max:255',
+            'name_english' => 'required|string|max:255',
         ]);
 
         $machine = Lineups::create([
             'name' => $request->input('name'),
             'code' => $request->input('code'),
+            'name_english' => $request->input('name_english'),
         ]);
 
-        return redirect('admin/lineups')->with('success', 'Lineup created successfully');
+        return redirect('admin/lineups')->with('success', trans('langconvert.lineups.lineup_created'));
     }
     public function lineupshow($id)
     {
@@ -130,16 +132,17 @@ class AdminMachineController extends Controller
         $this->authorize('Lineup Edit');
         $request->validate([
             'name' => 'required|string|max:255',
-            'code' => 'string|max:255|unique:lineups,code,' . $id,
+            'name_english' => 'required|string|max:255',
         ]);
 
-        $machine = Lineups::where('id', $id)->findOrFail($id);
-        $machine->name = $request->input('name');
-        $machine->code = $request->input('code');
+        $lineup = Lineups::where('id', $id)->findOrFail($id);
+        $lineup->name = $request->input('name');
+        $lineup->code = $request->input('code');
+        $lineup->name_english = $request->input('name_english');
 
-        $machine->update();
+        $lineup->update();
 
-        return redirect('/admin/lineups')->with('success', 'Lineup updated successfully');
+        return redirect('/admin/lineups')->with('success', trans('langconvert.lineups.lineup_updated'));
     }
     public function lineupdelete($id)
     {
@@ -147,7 +150,7 @@ class AdminMachineController extends Controller
         $lineup = Lineups::findOrFail($id);
 
         $lineup->delete();
-        return response()->json(['error' => 'Lineup deleted successfully.']);
+        return response()->json(['error' => trans('langconvert.lineup.lineup_deleted')]);
     }
     public function machineindex()
     {
@@ -180,7 +183,7 @@ class AdminMachineController extends Controller
                 })
                 ->addColumn('name', function ($data) {
                     return '<div><a href="#" class="h5">' .
-                        Str::limit($data->name, '40') .
+                        Str::limit(getName($data), '40') .
                         '</a></div>
                     <small class="fs-12 text-muted"> <span class="font-weight-normal1">' .
                         Str::limit($data->code, '40') .
@@ -220,11 +223,13 @@ class AdminMachineController extends Controller
         $this->authorize('Machine Create');
         $request->validate([
             'name' => 'required|string|max:255',
+            'name_english' => 'required|string|max:255',
             'code' => 'string|max:255|unique:machines',
         ]);
 
         $machine = Machines::create([
             'name' => $request->input('name'),
+            'name_english' => $request->input('name_english'),
             'code' => $request->input('code'),
             'image' => 'created',
         ]);
@@ -263,7 +268,7 @@ class AdminMachineController extends Controller
             }
         }
 
-        return redirect('admin/machines')->with('success', 'Machine created successfully');
+        return redirect('admin/machines')->with('success', trans('langconvert.machines.machine_created'));
     }
     public function machineshow($id)
     {
@@ -290,11 +295,13 @@ class AdminMachineController extends Controller
         $this->authorize('Machine Edit');
         $request->validate([
             'name' => 'required|string|max:255',
+            'name_english' => 'required|string|max:255',
             'code' => 'string|max:255|unique:machines,code,' . $id,
         ]);
 
         $machine = Machines::where('id', $id)->findOrFail($id);
         $machine->name = $request->input('name');
+        $machine->name_english = $request->input('name_english');
         $machine->code = $request->input('code');
 
         $machine->update();
@@ -333,7 +340,7 @@ class AdminMachineController extends Controller
             }
         }
 
-        return redirect('/admin/machines')->with('success', 'Machine updated successfully');
+        return redirect('/admin/machines')->with('success', trans('langconvert.machines.machine_updated'));
     }
     public function machinedelete($id)
     {
@@ -347,7 +354,7 @@ class AdminMachineController extends Controller
         }
 
         $machine->delete();
-        return response()->json(['error' => 'Machine deleted successfully.']);
+        return response()->json(['error' => trans('langconvert.machines.machine_deleted')]);
     }
 
     public function sparepartindex()
@@ -382,7 +389,7 @@ class AdminMachineController extends Controller
                 ->addColumn('machine_name', function ($data) {
                     $str = '';
                     foreach($data->machine as $machine) {$str .= '<div><a href="#" class="h5">' .
-                        Str::limit($machine->name, '40') .
+                        Str::limit(getName($machine), '40') .
                         '</a>
                     <small class="fs-12 text-muted">' .
                         Str::limit($machine->code, '40') .
@@ -391,7 +398,7 @@ class AdminMachineController extends Controller
                 })
                 ->addColumn('name', function ($data) {
                     return '<div><a href="#" class="h5">' .
-                        Str::limit($data->name, '40') .
+                        Str::limit(getName($data), '40') .
                         '</a></div>
                     <small class="fs-12 text-muted"> <span class="font-weight-normal1">' .
                         Str::limit($data->code, '40') .
@@ -439,6 +446,7 @@ class AdminMachineController extends Controller
         $this->authorize('Spare Part Create');
         $request->validate([
             'name' => 'required|string|max:255',
+            'name_english' => 'required|string|max:255',
             'machine_id' => 'required|array',
             'code' => 'string|max:255|unique:machines',
             'size' => 'string|max:255',
@@ -446,6 +454,7 @@ class AdminMachineController extends Controller
 
         $sparePart = SpareParts::create([
             'name' => $request->input('name'),
+            'name_english' => $request->input('name_english'),
             'machine_id' => $request->input('machine_id')[0],
             'code' => $request->input('code'),
             'size' => $request->input('size'),
@@ -485,7 +494,7 @@ class AdminMachineController extends Controller
             }
         }
         $sparePart->machine()->attach($request->input('machine_id'));
-        return redirect('admin/spare-parts')->with('success', 'Spare Part created successfully');
+        return redirect('admin/spare-parts')->with('success', trans('langconvert.spare_parts.spare_part_created'));
     }
     public function sparepartshow($id)
     {
@@ -516,6 +525,7 @@ class AdminMachineController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
+            'name_english' => 'required|string|max:255',
             'machine_id' => 'required|array',
             'code' => 'string|max:255|unique:spare_parts,code,' . $id,
             'size' => 'string|max:255',
@@ -523,6 +533,7 @@ class AdminMachineController extends Controller
 
         $sparePart = SpareParts::where('id', $id)->findOrFail($id);
         $sparePart->name = $request->input('name');
+        $sparePart->name_english = $request->input('name_english');
         $sparePart->code = $request->input('code');
         $sparePart->machine_id = $request->input('machine_id')[0];
         $sparePart->size = $request->input('size');
@@ -563,14 +574,14 @@ class AdminMachineController extends Controller
                 $sparePart->update(['image' => '/uploads/spare-parts/' . $image_name]);
             }
         }
-        return redirect('/admin/spare-parts')->with('success', 'Spare Part updated successfully');
+        return redirect('/admin/spare-parts')->with('success', trans('langconvert.spare_parts.spare_part_updated'));
     }
     public function sparepartdelete($id)
     {
         $this->authorize('Spare Part Delete');
         $sparePart = SpareParts::findOrFail($id);
         $sparePart->delete();
-        return response()->json(['error' => 'Spare Part deleted successfully.']);
+        return response()->json(['error' => trans('langconvert.spare_parts.spare_part_deleted')]);
     }
 
     public function machinedocumentindex()
@@ -602,7 +613,7 @@ class AdminMachineController extends Controller
                 ->addColumn('machine_name', function ($data) {
                     if ($data->machine) {
                         return '<div><a href="#" class="h5">' .
-                            Str::limit($data->machine->name, '40') .
+                            Str::limit(getName($data->machine), '40') .
                             '</a></div>
                     <small class="fs-12 text-muted"> <span class="font-weight-normal1">' .
                             Str::limit($data->machine->code, '40') .
@@ -678,7 +689,7 @@ class AdminMachineController extends Controller
             $validator = Validator::make($fileArray, $rules);
 
             if ($validator->fails()) {
-                return response()->json(['success'=>false, 'error' => 'Document can only be pdf,doc,docx,xls,xlsx,mp4 format']);
+                return response()->json(['success'=>false, 'error' => trans('langconvert.machines.document_type_error')]);
             } else {
                 $destination = public_path() . '/uploads/documents';
                 $path = time() . '.' . $file->getClientOriginalExtension();
@@ -740,7 +751,7 @@ class AdminMachineController extends Controller
             $validator = Validator::make($fileArray, $rules);
 
             if ($validator->fails()) {
-                return response()->json(['success'=>false, 'error' => 'Document can only be pdf,doc,docx,xls,xlsx,mp4 format']);
+                return response()->json(['success'=>false, 'error' => trans('langconvert.machines.document_type_error')]);
             } else {
                 $destination = public_path() . '/uploads/documents';
                 $path = time() . '.' . $file->getClientOriginalExtension();
@@ -757,7 +768,7 @@ class AdminMachineController extends Controller
         $this->authorize('Machine Document Delete');
         $machineDocument = MachineDocuments::findOrFail($id);
         $machineDocument->delete();
-        return response()->json(['error' => 'Machine Document deleted successfully.']);
+        return response()->json(['error' => trans('langconvert.machines.machine_document_deleted')]);
     }
 
     public function sparepartrequestindex()
@@ -869,7 +880,7 @@ class AdminMachineController extends Controller
             $sparePartRequest->status = 'Waiting for Approval';
         } else if($sparePartRequest->status == 'Approved'){
             if($rq->tracking_number == '') {
-                return redirect()->back()->with('error', 'Please enter valid tracking number');
+                return redirect()->back()->with('error', trans('langconvert.spare_parts.valid_tracking_number'));
             }
             $sparePartRequest->status = 'Shipped - Tracking Number: ' . $rq->tracking_number;
         } else {
@@ -878,7 +889,7 @@ class AdminMachineController extends Controller
         $sparePartRequest->update();
         $customer = $sparePartRequest->customer;
         $customer->notify(new SparePartRequestNotification($sparePartRequest));
-        return redirect('/admin/spare-part-requests')->with('success', 'Spare Part Request updated successfully');
+        return redirect('/admin/spare-part-requests')->with('success', trans('langconvert.spare_parts.spare_part_request_updated'));
     }
 
 
@@ -989,7 +1000,7 @@ class AdminMachineController extends Controller
             $validator = Validator::make($fileArray, $rules);
 
             if ($validator->fails()) {
-                return response()->json(['success'=>false, 'error' => 'Document can only be pdf,doc,docx,xls,xlsx,mp4 format']);
+                return response()->json(['success'=>false, 'error' => trans('langconvert.lineups.document_type_error')]);
             } else {
                 $destination = public_path() . '/uploads/documents';
                 $path = time() . '.' . $file->getClientOriginalExtension();
@@ -1051,7 +1062,7 @@ class AdminMachineController extends Controller
             $validator = Validator::make($fileArray, $rules);
 
             if ($validator->fails()) {
-                return response()->json(['success'=>false, 'error' => 'Document can only be pdf,doc,docx,xls,xlsx,mp4 format']);
+                return response()->json(['success'=>false, 'error' => trans('langconvert.lineups.document_type_error')]);
             } else {
                 $destination = public_path() . '/uploads/documents';
                 $path = time() . '.' . $file->getClientOriginalExtension();
@@ -1068,7 +1079,7 @@ class AdminMachineController extends Controller
         $this->authorize('Lineup Document Delete');
         $lineupDocument = LineupDocuments::findOrFail($id);
         $lineupDocument->delete();
-        return response()->json(['error' => 'Lineup Document deleted successfully.']);
+        return response()->json(['error' => trans('langconvert.lineups.lineup_document_deleted')]);
     }
 
     public function generateSparepartPdf($id) {

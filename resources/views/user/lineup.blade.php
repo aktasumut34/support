@@ -1,3 +1,8 @@
+@php
+    $lang = app()->getLocale();
+@endphp
+
+
 @extends('layouts.usermaster')
 
 @section('styles')
@@ -45,7 +50,9 @@
                     <div class="col-xl-9">
                         <div class="card">
                             <div class="card-header">
-                                <h2 class="card-title" style="font-size: 2em">{{ $lineup->name }}</h2>
+                                <h2 class="card-title" style="font-size: 2em">
+                                    {{ getName($lineup) }}
+                                </h2>
                             </div>
                             <div class='card-body'>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">

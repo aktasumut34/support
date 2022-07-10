@@ -49,7 +49,9 @@
                     <div class="col-xl-9">
                         <div class="card">
                             <div class="card-header">
-                                <h2 class="card-title" style="font-size: 2em">{{ $machine->name }}</h2>
+                                <h2 class="card-title" style="font-size: 2em">
+                                    {{ getName($machine) }}
+                                </h2>
                             </div>
                             <div class='card-body'>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">

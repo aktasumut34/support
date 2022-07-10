@@ -71,7 +71,7 @@ return[
 
     'adminmenu' => [
 
-        
+
         'createticket' => 'Bilet Oluştur',
         'visitsite' => 'Siteyi ziyaret et',
         'alltickets' => 'Tüm Biletler',
@@ -309,7 +309,7 @@ return[
         'secondarycolor' => 'İkincil renk',
         'globallanguage' => 'Küresel Dil Ayarı',
         'selectlanguage' => 'Dil Seçin',
-        'appglobalsettings' => 'Uygulama Genel Ayarları',   
+        'appglobalsettings' => 'Uygulama Genel Ayarları',
         'personalsettingadmin' => 'Yönetici Paneli İçin Kişisel Ayarı Etkinleştir',
         'personaladminpanel' => '(Bu ayarı devre dışı bırakırsanız, profil sayfasındaki Yönetici panelinden "Karanlık Moda Geç" seçeneği ile "Kişisel Ayar" kaybolacaktır.)',
         'personalsettingcustomer' => 'Müşteri Paneli İçin Kişisel Ayarı Etkinleştir',
@@ -380,8 +380,8 @@ return[
         'sitekey' => 'Site anahtarı',
         'secretkey' => 'Gizli anahtar',
         'captchasettingfroms' => 'Formlarda Captcha Ayarı',
-        'enablecontactform' => 'İletişim Formunda Etkinleştir', 
-        'enablecontactformcontent' => '(Bu captcha ayar özelliğini etkinleştirirseniz, "İletişim Formu"nda görünecektir.)', 
+        'enablecontactform' => 'İletişim Formunda Etkinleştir',
+        'enablecontactformcontent' => '(Bu captcha ayar özelliğini etkinleştirirseniz, "İletişim Formu"nda görünecektir.)',
         'enableregisterform' => 'Kayıt Formunda Etkinleştir',
         'enableregisterformcontent' => '(Bu captcha ayar özelliğini etkinleştirirseniz, "Kayıt Formu"nda görünecektir.)',
         'enableloginform' => 'Oturum Açma Formunu Etkinleştir',
@@ -438,7 +438,7 @@ return[
         'block' => 'Block',
         'addipaddress' => 'IP Adresi Ekle',
         'addnewipaddress' => 'Yeni IP Adresi Ekle',
-        //IP LIST// 
+        //IP LIST//
         //Email to Tickets//
         'enableemailtotickets' => 'Biletlere e-posta Etkinleştir/Devre Dışı Bırak',
         'imaphost' => 'IMAP Ana Bilgisayarı',
@@ -451,8 +451,8 @@ return[
         //Announcement//
         'startdate' => 'Başlangıç ​​tarihi',
         'enddate' => 'Bitiş tarihi',
-        'editanouncement' => 'Duyuruyu Düzenle',    
-        'addannouncement' => 'Duyuru Ekle',    
+        'editanouncement' => 'Duyuruyu Düzenle',
+        'addannouncement' => 'Duyuru Ekle',
         'addnewannouncement' => 'Yeni Duyuru Ekle',
         'noticetext' => 'Bildirim Metni ',
          //Announcement//
@@ -471,7 +471,7 @@ return[
         'onhold' => 'Beklemede',
         'total' => 'Toplam',
         'employeereports' => 'Çalışan Raporları',
-        'rating' => 'Değerlendirme',   
+        'rating' => 'Değerlendirme',
         'replycount' => 'Yanıt Sayısı',
         //Reports//
         //new addon's//
@@ -530,7 +530,7 @@ return[
         ],
 
         'userdashboard' => [
-            
+
             'ticketview' => 'Bilet Görünümü',
             'ticketdetails' => 'Bilet Detayları',
             'ticketclosedreopen' => 'Bu bilet kapalı. Tekrar açmak istiyor musun?',
@@ -622,7 +622,7 @@ return[
             'resetpasswordsend' => 'Şifre sıfırlama bağlantısı e-postanıza gönderildi.',
             'credentialsnotmatch' => 'Bu kimlik bilgileri kayıtlarımızla eşleşmiyor.',
             'languageupdate' => 'Dil başarıyla güncellendi',
-    
+
         ],
 
         'newwordslang' => [
@@ -659,11 +659,11 @@ return[
             'viewonheader' => 'Başkta görüntüle',
             'viewonfooter' => 'Alt bilgide Görüntüle',
             'maincategories' => 'Kategori',
-            'subcategory' => 'alt -Kategori',    
-            'subcategorylist' => 'alt   Kategori Liste', 
-            'addsubcategory' =>  'Ekle Alt Kategori',    
-            'subcategoryname' => 'Alt Kategory İsim',    
-            'addnewsubcategory' => 'EKle yeni alt kategori', 
+            'subcategory' => 'alt -Kategori',
+            'subcategorylist' => 'alt   Kategori Liste',
+            'addsubcategory' =>  'Ekle Alt Kategori',
+            'subcategoryname' => 'Alt Kategory İsim',
+            'addnewsubcategory' => 'EKle yeni alt kategori',
             'editsubcategory'   => 'Düzenle alt kategori',
             'viewonheader' => 'altbilgide görüntüle',
             'envatoapiassign' => 'Envato apisi atamak',
@@ -686,4 +686,130 @@ return[
             'ticketnotedes' => 'Notlarınızı buraya ekleyin',
         ],
 
+        'lineups' => [
+            'lineup' => 'Hat',
+            'lineups' => 'Hatlar',
+            'add_lineup' => 'Hat Ekle',
+            'edit_lineup' => 'Hattı Düzenle',
+            'all_lineups' => 'Hatlar',
+            'lineup_name' => 'Hat İsmi (Türkçe)',
+            'lineup_name_english' => 'Hat İsmi (İngilizce)',
+            'lineup_code' => 'Hat Kodu',
+            'show_lineup_documents' => 'Hat Dökümanlarını Göster',
+            'lineup_documents' => 'Hat Dökümanları',
+            'no_documents' => 'Bu hat için hiçbir döküman yok.',
+            'no_videos' => 'Bu hat için hiçbir video yok.',
+
+            'add_lineup_document' => 'Hat Dökümanı Ekle',
+            'edit_lineup_document' => 'Hat Dökümanı Düzenle',
+            'all_lineup_documents' => 'Hat Dökümanları',
+            'document_name' => 'Döküman İsmi',
+            'document_type' => 'Döküman Türü',
+            'select_document_type' => 'Döküman Türünü Seçin',
+            'pdf_word_document' => 'PDF / Word Dokümanı',
+            'select_lineup' => 'Hat Seçin',
+            'lineup_document' => 'Hat Dökümanı',
+
+            'lineups_and_machines' => 'Hatlar & Makineler',
+
+            'lineup_document_deleted' => 'Hat dökümanı başarıyla silindi',
+
+            'lineup_created' => 'Hat başarıyla oluşturuldu',
+            'lineup_updated' => 'Hat başarıyla güncellendi',
+            'lineup_deleted' => 'Hat başarıyla silindi',
+
+            'document_type_error' => 'Hat dökümanı sadece pdf,doc,docx,xls,xlsx,mp4 formatında olabilir.',
+        ],
+
+        'machines' => [
+            'machine' => 'Makine',
+            'machines' => 'Makineler',
+            'add_machine' => 'Makine Ekle',
+            'edit_machine' => 'Makineyi Düzenle',
+            'all_machines' => 'Makineler',
+            'machine_name' => 'Makine İsmi (Türkçe)',
+            'machine_name_english' => 'Makine İsmi (İngilizce)',
+            'machine_code' => 'Makine Kodu',
+            'machine_image' => 'Makine Resmi',
+            'machines_and_documents' => 'Makineler & Dökümanlar',
+            'show_documents' => 'Dökümanları Göster',
+            'machine_code' => 'Makine Kodu',
+            'serial_number' => 'Seri Numarası',
+            'register_date' => 'Kayıt Tarihi',
+            'documents' => 'Dökümanlar',
+            'videos' => 'Videolar',
+            'no_documents' => 'Bu makine için hiçbir döküman yok.',
+            'no_videos' => 'Bu makine için hiçbir video yok.',
+
+            'machine_documents' => 'Makine Dökümanları',
+            'add_machine_document' => 'Makine Dökümanı Ekle',
+            'edit_machine_document' => 'Makine Dökümanını Düzenle',
+            'all_machine_documents' => 'Makine Dökümanları',
+            'document_name' => 'Döküman İsmi',
+            'document_type' => 'Döküman Türü',
+            'select_document_type' => 'Döküman Türünü Seçin',
+            'pdf_word_document' => 'PDF / Word Dokümanı',
+            'select_machine' => 'Makine Seçin',
+            'machine_document' => 'Makine Dökümanı',
+
+            'machine_document_deleted' => 'Makine dökümanı başarıyla silindi',
+
+            'machine_created' => 'Makine başarıyla oluşturuldu',
+            'machine_updated' => 'Makine başarıyla güncellendi',
+            'machine_deleted' => 'Makine başarıyla silindi',
+
+            'document_type_error' => 'Makine dökümanı sadece pdf,doc,docx,xls,xlsx,mp4 formatında olabilir.',
+        ],
+
+        'spare_parts' => [
+            'spare_part' => 'Yedek Parça',
+            'spare_parts' => 'Yedek Parçalar',
+            'all_spare_parts' => 'Yedek Parçalar',
+            'spare_part_request' => 'Yedek Parça Siparişi',
+            'spare_part_requests' => 'Yedek Parça Siparişleri',
+            'add_spare_part' => 'Yedek Parça Ekle',
+            'edit_spare_part' => 'Yedek Parçayı Düzenle',
+            'spare_part_name' => 'Yedek Parça İsmi (Türkçe)',
+            'spare_part_name_english' => 'Yedek Parça İsmi (İngilizce)',
+            'spare_part_code' => 'Yedek Parça Kodu',
+            'spare_part_image' => 'Yedek Parça Resmi',
+            'select_machine' => 'Makine Seçin',
+            'size_info' => 'Boyut Bilgisi',
+            'spare_part_request_number' => 'Sipariş Numarası',
+            'all_spare_part_requests' => 'Yedek Parça Siparişleri',
+            'new_spare_part_request' => 'Yeni Yedek Parça Siparişi',
+            'request_number' => 'Sipariş Numarası',
+            'generate_pdf' => 'PDF oluştur',
+            'add' => 'Ekle',
+            'no_spare_part' => 'Bu makine için hiçbir yedek parça yok.',
+            'no_spare_part_query' => 'Bu sorgu için hiçbir yedek parça yok.',
+            'send_request' => 'Siparişi Gönder',
+            'cart_no_items' => 'Sepetinizde hiç ürün yok.',
+            'search' => 'Arama',
+            'status' => 'Durum',
+            'request_created_at' => 'Sipariş Tarihi',
+            'last_action' => 'Son İşlem',
+            'quantity' => 'Adet',
+            'unit_price' => 'Birim Fiyat (₺)',
+            'total_price' => 'Toplam Fiyat (₺)',
+            'discounted_price' => 'İndirimli Fiyat (₺)',
+            'due_date' => 'Teslim Tarihi',
+            'out_of_stock' => 'Stokta Yok',
+            'approve' => 'Onayla',
+            'reject' => 'Reddet',
+            'ship_now' => 'Şimdi Gönder',
+            'tracking_number' => 'Kargo Takip Numarası',
+
+            'request_created_successfully' => 'Yedek parça siparişi başarıyla oluşturuldu.',
+            'request_updated_successfully' => 'Yedek parça siparişi başarıyla güncellendi.',
+            'request_not_found' => 'Yedek parça siparişi bulunamadı.',
+
+            'spare_part_created' => 'Yedek parça başarıyla oluşturuldu.',
+            'spare_part_updated' => 'Yedek parça başarıyla güncellendi.',
+            'spare_part_deleted' => 'Yedek parça başarıyla silindi.',
+
+            'spare_part_request_updated' => 'Yedek parça siparişi başarıyla güncellendi.',
+
+            'valid_tracking_number' => 'Geçerli kargo takip numarası girmelisiniz.',
+        ]
 ];

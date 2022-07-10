@@ -15,7 +15,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Machines</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.machines.machines') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -24,11 +24,11 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header d-sm-max-flex border-0">
-                <h4 class="card-title">All Machines</h4>
+                <h4 class="card-title">{{ trans('langconvert.machines.all_machines') }}</h4>
                 <div class="card-options mt-sm-max-2">
                     <a href="{{ url('admin/machines/create') }}" class="btn btn-success me-3"><i
                             class="feather feather-plus"></i>
-                        Add Machine</a>
+                            {{ trans('langconvert.machines.add_machine') }}</a>
 
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <thead>
                             <tr>
                                 <th width="10">{{ trans('langconvert.admindashboard.id') }}</th>
-                                <th width="10">Image</th>
+                                <th width="10">{{ trans('langconvert.machines.machine_image') }}</th>
                                 <th>{{ trans('langconvert.admindashboard.name') }}</th>
                                 <th>{{ trans('langconvert.admindashboard.actions') }}</th>
                             </tr>

@@ -15,7 +15,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Spare Parts</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.spare_parts.spare_parts') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -24,11 +24,11 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header d-sm-max-flex border-0">
-                <h4 class="card-title">All Spare Parts</h4>
+                <h4 class="card-title">{{ trans('langconvert.spare_parts.all_spare_parts') }}</h4>
                 <div class="card-options mt-sm-max-2">
                     <a href="{{ url('admin/spare-parts/create') }}" class="btn btn-success me-3"><i
                             class="feather feather-plus"></i>
-                        Add Spare Part</a>
+                            {{ trans('langconvert.spare_parts.add_spare_part') }}</a>
 
                 </div>
             </div>
@@ -40,10 +40,10 @@
                         <thead>
                             <tr>
                                 <th width="10">{{ trans('langconvert.admindashboard.id') }}</th>
-                                <th width="10">Image</th>
+                                <th width="10">{{ trans('langconvert.spare_parts.spare_part_image') }}</th>
                                 <th>{{ trans('langconvert.admindashboard.name') }}</th>
-                                <th>Size</th>
-                                <th>Machine</th>
+                                <th>{{ trans('langconvert.spare_parts.size_info') }}</th>
+                                <th>{{ trans('langconvert.machines.machine') }}</th>
                                 <th>{{ trans('langconvert.admindashboard.actions') }}</th>
                             </tr>
                         </thead>

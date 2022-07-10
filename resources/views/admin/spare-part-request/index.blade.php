@@ -15,7 +15,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Spare Part Reqeuest</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.spare_parts.spare_part_requests') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -24,7 +24,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header d-sm-max-flex border-0">
-                <h4 class="card-title">All Spare Part Requests</h4>
+                <h4 class="card-title">{{ trans('langconvert.spare_parts.all_spare_part_requests') }}</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive spruko-delete">
@@ -36,11 +36,11 @@
                                 <tr>
                                     <th>{{ trans('langconvert.admindashboard.id') }}</th>
                                     <th>#{{ trans('langconvert.admindashboard.id') }}</th>
-                                    <th>Customer</th>
-                                    <th>Request Number</th>
+                                    <th>{{ trans('langconvert.admindashboard.customer') }}</th>
+                                    <th>{{ trans('langconvert.spare_parts.spare_part_request_number') }}</th>
                                     <th>{{ trans('langconvert.admindashboard.date') }}</th>
                                     <th>{{ trans('langconvert.admindashboard.status') }}</th>
-                                    <th>Last Action</th>
+                                    <th>{{ trans('langconvert.spare_parts.last_action') }}</th>
                                     <th>{{ trans('langconvert.admindashboard.actions') }}</th>
                                 </tr>
                             </thead>

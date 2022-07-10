@@ -15,7 +15,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Lineups</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.lineups.lineups') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -24,11 +24,11 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header d-sm-max-flex border-0">
-                <h4 class="card-title">All Lineups</h4>
+                <h4 class="card-title">{{ trans('langconvert.lineups.all_lineups') }}</h4>
                 <div class="card-options mt-sm-max-2">
                     <a href="{{ url('admin/lineups/create') }}" class="btn btn-success me-3"><i
                             class="feather feather-plus"></i>
-                        Add Lineup</a>
+                            {{ trans('langconvert.lineups.add_lineup') }}</a>
 
                 </div>
             </div>

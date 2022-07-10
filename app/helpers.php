@@ -21,6 +21,14 @@ function getLanguages()
 {
 
 	$scanned_directory = array_diff(scandir( resource_path('lang') ), array('..', '.'));
-	
+
 	return $scanned_directory;
+}
+
+function getName($entity) {
+    $lang = app()->getLocale();
+    if($lang != 'Turkce') {
+        return $entity->name_english;
+    }
+    return $entity->name;
 }

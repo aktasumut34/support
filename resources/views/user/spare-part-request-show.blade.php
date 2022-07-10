@@ -77,14 +77,14 @@
                                                      @foreach ($sparePartRequest->items as $item)
                                                          <tr>
                                                              <td class="t-flex t-flex-col"><span
-                                                                     class="t-font-semibold t-text-lg t-text-slate-700">{{ $item->customerLineupMachine->machine->name }}</span>
+                                                                     class="t-font-semibold t-text-lg t-text-slate-700">{{ getName($item->customerLineupMachine->machine) }}</span>
                                                                  <span
                                                                      class="t-text-slate-500 t-text-sm">{{ $item->customerLineupMachine->machine->code }}</span>
                                                              </td>
                                                              <td class="t-text-lg">
                                                                  {{ $item->customerLineupMachine->serial_number }}</td>
                                                              <td class="t-flex t-flex-col"><span
-                                                                     class="t-font-semibold t-text-lg t-text-slate-700">{{ $item->sparePart->name }}</span>
+                                                                     class="t-font-semibold t-text-lg t-text-slate-700">{{ getName($item->sparePart) }}</span>
                                                                  <span
                                                                      class="t-text-slate-500 t-text-sm">{{ $item->sparePart->code }}</span>
                                                              </td>
@@ -120,7 +120,7 @@
                                                 </div>
                                                 @if($sparePartRequest->discounted_total && $sparePartRequest->discounted_total != $sparePartRequest->total)
                                                     <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                                        <span class="t-font-bold">Discounted Price (₺)</span>
+                                                        <span class="t-font-bold">{{ trans('langconvert.spare_parts.discounted_price') }}</span>
                                                         <span class="t-font-semibold">₺ {{ number_format($sparePartRequest->discounted_total, 2) }}</span>
                                                     </div>
                                                 @endif

@@ -312,24 +312,21 @@
                                             <g id="Car_factory">
                                             </g>
                                         </svg>
-                                        <span class="side-menu__label">Lineups & Machines</span><i
+                                        <span class="side-menu__label">{{ trans('langconvert.lineups.lineups_and_machines') }}</span><i
                                             class="angle fa fa-angle-right"></i>
                                     </a>
                                     <ul class="slide-menu custom-ul">
                                         <li><a href="{{ url('/admin/lineups') }}"
-                                                class="slide-item">Lineups</a>
+                                                class="slide-item">{{ trans('langconvert.lineups.lineups') }}</a>
                                         </li>
                                         <li><a href="{{ url('/admin/lineup-documents') }}"
-                                                class="slide-item">Lineup
-                                                Documents</a></li>
+                                                class="slide-item">{{ trans('langconvert.lineups.lineup_documents') }}</a></li>
                                         <li><a href="{{ url('/admin/machines') }}"
-                                                class="slide-item">Machines</a>
+                                                class="slide-item">{{ trans('langconvert.machines.machines') }}</a>
                                         </li>
                                         <li><a href="{{ url('/admin/machine-documents') }}"
-                                                class="slide-item">Machine
-                                                Documents</a></li>
-                                        <li><a href="{{ url('/admin/spare-parts') }}" class="slide-item">Spare
-                                                Parts</a></li>
+                                                class="slide-item">{{ trans('langconvert.machines.machine_documents') }}</a></li>
+                                        <li><a href="{{ url('/admin/spare-parts') }}" class="slide-item">{{ trans('langconvert.spare_parts.spare_parts') }}</a></li>
                                     </ul>
                                 </li>
                                 <li class="slide">
@@ -445,7 +442,7 @@
                                             <g id="Car_factory">
                                             </g>
                                         </svg>
-                                        <span class="side-menu__label">Spare Part Requests</span><i
+                                        <span class="side-menu__label">{{ trans('langconvert.spare_parts.spare_part_requests') }}</span><i
                                             class="angle fa fa-angle-right"></i>
                                     </a>
                                 </li>

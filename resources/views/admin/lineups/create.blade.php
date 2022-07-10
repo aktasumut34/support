@@ -9,7 +9,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Lineups</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.lineups.lineups') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -18,7 +18,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header border-0">
-                <h4 class="card-title">Add Lineup</h4>
+                <h4 class="card-title">{{ trans('langconvert.lineups.add_lineup') }}</h4>
             </div>
             <form method="POST" action="{{ url('/admin/lineups/create') }}" enctype="multipart/form-data">
                 <div class="card-body">
@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Lineup Name</label>
+                                <label class="form-label">{{ trans('langconvert.lineups.lineup_name') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name') }}">
                                 @error('name')
@@ -40,7 +40,19 @@
                         </div>
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Lineup Code</label>
+                                <label class="form-label">{{ trans('langconvert.lineups.lineup_name_english') }}</label>
+                                <input type="text" class="form-control @error('name_english') is-invalid @enderror" name="name_english"
+                                    value="{{ old('name_english') }}">
+                                @error('name_english')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">{{ trans('langconvert.lineups.lineup_code') }}</label>
                                 <input type="text" class="form-control @error('code') is-invalid @enderror" name="code"
                                     value="{{ old('code') }}">
                                 @error('code')
@@ -54,7 +66,7 @@
                 </div>
                 <div class="col-md-12 card-footer">
                     <div class="form-group float-end">
-                        <input type="submit" class="btn btn-secondary" value="Create Lineup"
+                        <input type="submit" class="btn btn-secondary" value="{{ trans('langconvert.lineups.add_lineup') }}"
                             onclick="this.disabled=true;this.form.submit();">
                     </div>
                 </div>

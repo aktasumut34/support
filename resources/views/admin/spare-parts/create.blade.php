@@ -9,7 +9,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Spare Parts</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.spare_parts.spare_part') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -18,7 +18,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header border-0">
-                <h4 class="card-title">Add Spare Part</h4>
+                <h4 class="card-title">{{ trans('langconvert.spare_parts.add_spare_part') }}</h4>
             </div>
             <form method="POST" action="{{ url('/admin/spare-parts/create') }}" enctype="multipart/form-data">
                 <div class="card-body">
@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Spare Part Name</label>
+                                <label class="form-label">{{ trans('langconvert.spare_parts.spare_part_name') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name') }}">
                                 @error('name')
@@ -40,7 +40,19 @@
                         </div>
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Spare Part Code</label>
+                                <label class="form-label">{{ trans('langconvert.spare_parts.spare_part_name_english') }}</label>
+                                <input type="text" class="form-control @error('name_english') is-invalid @enderror" name="name_english"
+                                    value="{{ old('name_english') }}">
+                                @error('name_english')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">{{ trans('langconvert.spare_parts.spare_part_code') }}</label>
                                 <input type="text" class="form-control @error('code') is-invalid @enderror" name="code"
                                     value="{{ old('code') }}">
                                 @error('code')
@@ -52,7 +64,7 @@
                         </div>
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Size Info</label>
+                                <label class="form-label">{{ trans('langconvert.spare_parts.size_info') }}</label>
                                 <input type="text" class="form-control @error('size') is-invalid @enderror" name="size"
                                     value="{{ old('size') }}">
                                 @error('size')
@@ -63,11 +75,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Select Machine <span class="text-red">*</span></label>
+                            <label class="form-label">{{ trans('langconvert.spare_parts.select_machine') }} <span class="text-red">*</span></label>
                             <select
                                 class="form-control select2-show-search select2 @error('machine_id') is-invalid @enderror"
-                                data-placeholder="Select Machine" name="machine_id[]" id="machine_id" multiple='multiple'>
-                                <option label="Select Machine"></option>
+                                data-placeholder="{{ trans('langconvert.spare_parts.select_machine') }}" name="machine_id[]" id="machine_id" multiple='multiple'>
+                                <option label="{{ trans('langconvert.spare_parts.select_machine') }}"></option>
                                 @foreach ($machines as $machine)
                                     <option value="{{ $machine->id }}" @if (old('machine_id') == $machine->id) selected @endif>
                                         {{ $machine->name }} ( {{ $machine->code }} )</option>
@@ -84,7 +96,7 @@
                         </div>
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Spare Part Image</label>
+                                <label class="form-label">{{ trans('langconvert.spare_parts.spare_part_image') }}</label>
                                 <div class="input-group file-browser">
                                     <input class="form-control @error('image') is-invalid @enderror" name="image"
                                         type="file" accept="image/png, image/jpeg,image/jpg">
@@ -103,7 +115,7 @@
                 </div>
                 <div class="col-md-12 card-footer">
                     <div class="form-group float-end">
-                        <input type="submit" class="btn btn-secondary" value="Create Spare Part"
+                        <input type="submit" class="btn btn-secondary" value="{{ trans('langconvert.spare_parts.add_spare_part') }}"
                             onclick="this.disabled=true;this.form.submit();">
                     </div>
                 </div>

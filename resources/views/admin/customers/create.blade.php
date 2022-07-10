@@ -250,7 +250,7 @@
                 name="machines[]" id="machineselect-changeme">
                 <option label="Select Machine"></option>
                 @foreach ($machines as $machine)
-                    <option data-name='{{ $machine->name }}' data-code='{{ $machine->code }}' value="{{ $machine->id }}">{{ $machine->name }}</option>
+                    <option data-name='{{ $machine->name }}' data-code='{{ $machine->code }}' value="{{ $machine->id }}">{{ $machine->name }} ( {{ $machine->code }} )</option>
                 @endforeach
             </select>
         </div>

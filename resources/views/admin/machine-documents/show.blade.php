@@ -4,7 +4,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Machine Documents</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.machines.machine_documents') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -13,7 +13,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header border-0">
-                <h4 class="card-title">Edit Machine Document</h4>
+                <h4 class="card-title">{{ trans('langconvert.machines.edit_machine_document') }}</h4>
             </div>
             <form method="POST" action="{{ url('/admin/machine-documents/' . $document->id) }}"
                 enctype="multipart/form-data">
@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Document Name</label>
+                            <label class="form-label">{{ trans('langconvert.machines.document_name') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ $document->name, old('name') }}">
                                 @error('name')
@@ -35,12 +35,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Document Type <span class="text-red">*</span></label>
+                        <label class="form-label">{{ trans('langconvert.machines.document_type') }} <span class="text-red">*</span></label>
                             <select class="form-control select2-show-search select2 @error('type') is-invalid @enderror"
                                 data-placeholder="Select Document Type" name="type" id="type">
                                 <option label="Select Document Type"></option>
-                                <option value='document' @if ($document->type == 'document') selected @endif>PDF / Word
-                                    Document</option>
+                                <option value='document' @if ($document->type == 'document') selected @endif>{{ trans('langconvert.machines.pdf_word_document') }}</option>
                                 <option value='video' @if ($document->type == 'video') selected @endif>Video</option>
                             </select>
                             @error('type')
@@ -51,14 +50,14 @@
 
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Machine <span class="text-red">*</span></label>
+                            <label class="form-label">{{ trans('langconvert.machines.select_machine') }} <span class="text-red">*</span></label>
                             <select
                                 class="form-control select2-show-search select2 @error('machine_id') is-invalid @enderror"
                                 data-placeholder="Select Machine" name="machine_id" id="machine_id">
                                 <option label="Select Machine"></option>
                                 @foreach ($machines as $machine)
                                     <option value="{{ $machine->id }}" @if ($document->machine_id == $machine->id) selected @endif>
-                                        {{ $machine->name }} (
+                                        {{ getName($machine) }} (
                                         {{ $machine->code ? $machine->code : 'No Code Provided' }} )</option>
                                 @endforeach
 
@@ -72,7 +71,7 @@
                         </div>
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Machine Document</label>
+                                <label class="form-label">{{ trans('langconvert.machines.machine_document') }}</label>
                                 <div class="input-group file-browser">
                                     <input class="form-control @error('path') is-invalid @enderror" name="document"
                                         type="file" accept="*">

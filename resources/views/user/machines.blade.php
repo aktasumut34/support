@@ -66,7 +66,7 @@ background: linear-gradient(0deg, rgba(227, 143, 27, 0.60) 0%, rgba(227, 143, 27
                         @foreach ($lineups as $lineup)
                             <div class="row" style="margin-bottom: 45px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
-                                    <h2 class="card-title" style="font-size: 2em; margin-bottom: 0;">{{ $lineup->name }}</h2>
+                                    <h2 class="card-title" style="font-size: 2em; margin-bottom: 0;">{{ getName($lineup) }}</h2>
                                     <a href="{{ route('lineup', ['id' => $lineup->id]) }}" class="btn btn-primary">{{ trans('langconvert.lineups.show_lineup_documents') }}</a>
                                     <a class='btn btn-secondary' id="collapseLever-{{$lineup->id}}" data-bs-toggle='collapse' href='#collapse-{{$lineup->id}}'>+</a>
                                 </div>
@@ -80,7 +80,7 @@ background: linear-gradient(0deg, rgba(227, 143, 27, 0.60) 0%, rgba(227, 143, 27
                                                 <div class="card" style="height: 100%">
                                                     <div class="card-header"
                                                         style="display: flex; flex-direction: column; align-items: start; justify-content: left;">
-                                                        <h4 class="card-title">{{ $machine->name }}</h4>
+                                                        <h4 class="card-title">{{ getName($machine) }}</h4>
                                                         </h4>
                                                         <small>{{ trans('langconvert.machines.machine_code') }}:
                                                             <b>{{ $machine->code }}</b></small>

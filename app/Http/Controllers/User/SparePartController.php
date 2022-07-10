@@ -25,6 +25,9 @@ class SparePartController extends Controller
 {
     public function index()
     {
+
+        setlocale(LC_TIME, 'tr');
+        \Carbon\Carbon::setLocale('tr');
         $title = Apptitle::first();
         $data['title'] = $title;
 
@@ -48,8 +51,7 @@ class SparePartController extends Controller
                     return $subject;
                 })
                 ->addColumn('created_at', function ($data) {
-                    $created_at = $data->created_at->format(setting('date_format'));
-                    return $created_at;
+                    return $data->created_at->format(setting('date_format'));
                 })
                 ->addColumn('status', function ($data) {
                     if ($data->status == 'New') {
@@ -166,7 +168,7 @@ class SparePartController extends Controller
         }
         return redirect()
             ->route('spare-part-request')
-            ->with('success', 'Spare Part Request Created Successfully');
+            ->with('success', trans('langconvert.spare_parts.request_created_successfully'));
     }
     public function show($id)
     {
@@ -177,7 +179,7 @@ class SparePartController extends Controller
         if ($sparePartRequest == null) {
             return redirect()
                 ->route('spare-part-request')
-                ->with('error', 'Spare Part Request Not Found');
+                ->with('error', trans('langconvert.spare_parts.request_not_found'));
         }
         $title = Apptitle::first();
         $data['title'] = $title;
@@ -202,7 +204,7 @@ class SparePartController extends Controller
         if ($sparePartRequest == null) {
             return redirect()
                 ->route('spare-part-request')
-                ->with('error', 'Spare Part Request Not Found');
+                ->with('error', trans('langconvert.spare_parts.request_not_found'));
         }
         if($rq->status == 'Approve') $sparePartRequest->status = 'Approved';
         else if($rq->status == 'Reject') $sparePartRequest->status = 'Rejected';
@@ -214,6 +216,6 @@ class SparePartController extends Controller
         }
         return redirect()
             ->route('spare-part-request')
-            ->with('success', 'Spare Part Request Updated Successfully');
+            ->with('success', trans('langconvert.spare_parts.request_updated_successfully'));
     }
 }

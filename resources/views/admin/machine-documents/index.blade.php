@@ -15,7 +15,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Machine Documents</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.machines.machine_documents') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -24,11 +24,11 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header d-sm-max-flex border-0">
-                <h4 class="card-title">All Machine Documents</h4>
+                <h4 class="card-title">{{ trans('langconvert.machines.all_machine_documents') }}</h4>
                 <div class="card-options mt-sm-max-2">
                     <a href="{{ url('admin/machine-documents/create') }}" class="btn btn-success me-3"><i
                             class="feather feather-plus"></i>
-                        Add Machine Document</a>
+                            {{ trans('langconvert.machines.add_machine_document') }}</a>
 
                 </div>
             </div>
@@ -41,8 +41,8 @@
                             <tr>
                                 <th width="10">{{ trans('langconvert.admindashboard.id') }}</th>
                                 <th width="10">{{ trans('langconvert.admindashboard.name') }}</th>
-                                <th>Machine</th>
-                                <th width="10">Document Type</th>
+                                <th>{{ trans('langconvert.machines.machine') }}</th>
+                                <th width="10">{{ trans('langconvert.machines.document_type') }}</th>
                                 <th>Link</th>
                                 <th>{{ trans('langconvert.admindashboard.actions') }}</th>
                             </tr>

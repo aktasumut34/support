@@ -6,7 +6,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Spare Part Request</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">{{ trans('langconvert.spare_parts.spare_part_requests') }}</span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -16,10 +16,10 @@
         <div class="card t-min-h-[50vh] mb-0">
             <div class="card-header border-0 t-flex t-justify-between">
                 <h4 class="card-title">
-                    <span class="t-font-normal">Spare Part Request:</span>
+                    <span class="t-font-normal">{{ trans('langconvert.spare_parts.spare_part_request') }}:</span>
                     <span class="t-font-bold">{{ $sparePartRequest->request_no }}</span>
                 </h4>
-                <a target="_blank" href="/admin/generate-sparepart-pdf/{{ $sparePartRequest->id }}" class="btn btn-primary">Generate PDF</a>
+                <a target="_blank" href="/admin/generate-sparepart-pdf/{{ $sparePartRequest->id }}" class="btn btn-primary">{{ trans('langconvert.spare_parts.generate_pdf') }}</a>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('sparepartrequestupdate', $sparePartRequest->id) }}">
@@ -27,7 +27,7 @@
                     <div class="t-flex t-flex-col t-gap-8">
                         <div class="t-grid t-grid-cols-2 xl:t-grid-cols-4 t-gap-4">
                             <div class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                <span class="t-font-bold">Customer</span>
+                                <span class="t-font-bold">{{ trans('langconvert.admindashboard.customer') }}</span>
                                 <span class="t-font-semibold t-flex t-flex-col t-items-end">
                                     <span
                                         class="t-text-lg t-text-slate-800">{{ $sparePartRequest->customer->username }}</span>
@@ -35,16 +35,16 @@
                                 </span>
                             </div>
                             <div class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                <span class="t-font-bold">Status</span>
+                                <span class="t-font-bold">{{ trans('langconvert.admindashboard.status') }}</span>
                                 <span>{{ $sparePartRequest->status }}</span>
                             </div>
                             <div class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                <span class="t-font-bold">Request Created</span>
+                                <span class="t-font-bold">{{ trans('langconvert.spare_parts.request_created_at') }}</span>
                                 <span
                                     class="t-font-semibold">{{ $sparePartRequest->created_at->format(setting('date_format')) }}</span>
                             </div>
                             <div class="t-flex t-justify-between t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                                <span class="t-font-bold">Last Action</span>
+                                <span class="t-font-bold">{{ trans('langconvert.spare_parts.last_action') }}</span>
                                 <span class="t-font-semibold">{{ $sparePartRequest->updated_at->diffForHumans() }}</span>
                             </div>
                         </div>
@@ -64,14 +64,14 @@
                                 @foreach ($sparePartRequest->items as $item)
                                     <tr>
                                         <td class="t-flex t-flex-col"><span
-                                                class="t-font-semibold t-text-lg t-text-slate-700">{{ $item->customerLineupMachine->machine->name }}</span>
+                                                class="t-font-semibold t-text-lg t-text-slate-700">{{ getName($item->customerLineupMachine->machine) }}</span>
                                             <span
                                                 class="t-text-slate-500 t-text-sm">{{ $item->customerLineupMachine->machine->code }}</span>
                                         </td>
                                         <td class="t-text-lg">
                                             {{ $item->customerLineupMachine->serial_number }}</td>
                                         <td class="t-flex t-flex-col"><span
-                                                class="t-font-semibold t-text-lg t-text-slate-700">{{ $item->sparePart->name }}</span>
+                                                class="t-font-semibold t-text-lg t-text-slate-700">{{ getName($item->sparePart) }}</span>
                                             <span class="t-text-slate-500 t-text-sm">{{ $item->sparePart->code }}</span>
                                         </td>
                                         <td class="t-text-lg">
@@ -93,23 +93,23 @@
                     </div>
                     <div class="t-flex t-flex-col t-gap-2 t-mb-8">
                         <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                            <span class="t-font-bold">Total Price (₺)</span>
+                            <span class="t-font-bold">{{ trans('langconvert.spare_parts.total_price') }}</span>
                             <span class="t-font-semibold" id='totalPrice'>₺ {{ number_format($sparePartRequest->total, 2) }}</span>
                             <input type='hidden' name='total' value="{{ $sparePartRequest->total }}" />
                         </div>
 
                         <div class="t-grid t-grid-cols-2 t-items-center t-rounded-lg t-bg-slate-200 t-p-4">
-                            <span class="t-font-bold">Discounted Price (₺)</span>
+                            <span class="t-font-bold">{{ trans('langconvert.spare_parts.discounted_price') }}</span>
                             <input type='text' class='form-control' value='{{ number_format($sparePartRequest->discounted_total, 2) }}' name='discounted_total' placeholder='Discounted Total' id="discounted_total" @if($sparePartRequest->status != 'New' && $sparePartRequest->status != 'Rejected' && $sparePartRequest->status != 'Waiting for Approval') disabled @endif>
                         </div>
                     </div>
                     <input type="hidden" name="items" id="items" value="{{ json_encode($sparePartRequest->items) }}" />
                     @if($sparePartRequest->status == 'Approved')
-                        <label>Tracking Number: </label>
+                        <label>{{ trans('langconvert.spare_parts.tracking_number') }}: </label>
                         <input type='text' class='form-control' style='margin-bottom: 5px;' name='tracking_number' placeholder='Tracking Number'>
-                        <button class="btn btn-primary" type="submit">Ship Now</button>
+                        <button class="btn btn-primary" type="submit">{{ trans('langconvert.spare_parts.ship_now') }}</button>
                     @else
-                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-primary" type="submit">{{ trans('langconvert.admindashboard.savechanges') }}</button>
                     @endif
                 </form>
             </div>

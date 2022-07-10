@@ -9,7 +9,7 @@
     <!--Page header-->
     <div class="page-header d-xl-flex d-block">
         <div class="page-leftheader">
-            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2">Lineup Documents</span></h4>
+            <h4 class="page-title"><span class="font-weight-normal text-muted ms-2"> {{ trans('langconvert.lineups.lineup_documents') }} </span></h4>
         </div>
     </div>
     <!--End Page header-->
@@ -18,7 +18,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card">
             <div class="card-header border-0">
-                <h4 class="card-title">Add Lineup Document</h4>
+                <h4 class="card-title">{{ trans('langconvert.lineups.add_lineup_document') }}</h4>
             </div>
             <form method="POST" action="{{ url('/admin/lineup-documents/create') }}" enctype="multipart/form-data">
                 <div class="card-body">
@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Document Name</label>
+                                <label class="form-label">{{ trans('langconvert.lineups.document_name') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name') }}">
                                 @error('name')
@@ -39,13 +39,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Select Document Type <span class="text-red">*</span></label>
+                            <label class="form-label">{{ trans('langconvert.lineups.select_document_type') }} <span class="text-red">*</span></label>
                             <select
                                 class="form-control select2-show-search select2 @error('type') is-invalid @enderror"
                                 data-placeholder="Select Document Type" name="type" id="type">
                                 <option label="Select Document Type"></option>
-                                <option value='document' @if (old('type') == 'document') selected @endif>PDF / Word
-                                    Document</option>
+                                <option value='document' @if (old('type') == 'document') selected @endif>{{ trans('langconvert.lineups.pdf_word_document') }}</option>
                                 <option value='video' @if (old('type') == 'video') selected @endif>Video</option>
                             </select>
                             @error('type')
@@ -56,14 +55,14 @@
 
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Select Lineup <span class="text-red">*</span></label>
+                            <label class="form-label">{{ trans('langconvert.lineups.select_lineup') }} <span class="text-red">*</span></label>
                             <select
                                 class="form-control select2-show-search select2 @error('lineup_id') is-invalid @enderror"
                                 data-placeholder="Select Lineup" name="lineup_id" id="lineup_id">
                                 <option label="Select Lineup"></option>
                                 @foreach ($lineups as $lineup)
                                     <option value="{{ $lineup->id }}" @if (old('lineup_id') == $lineup->id) selected @endif>
-                                        {{ $lineup->name }} (
+                                        {{ getName($lineup) }} (
                                         {{ $lineup->code ? $lineup->code : 'No Code Provided' }} )</option>
                                 @endforeach
 
@@ -77,7 +76,7 @@
                         </div>
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">
-                                <label class="form-label">Lineup Document</label>
+                                <label class="form-label">{{ trans('langconvert.lineups.lineup_document') }}</label>
                                 <div class="input-group file-browser">
                                     <input class="form-control @error('path') is-invalid @enderror" name="document"
                                         type="file" accept="*">
@@ -99,7 +98,7 @@
                 </div>
                 <div class="col-md-12 card-footer">
                     <div class="form-group float-end">
-                        <input type="submit" class="btn btn-secondary" value="Create Spare Part">
+                        <input type="submit" class="btn btn-secondary" value="{{ trans('langconvert.lineups.add_lineup_document') }}">
                     </div>
                 </div>
             </form>
